@@ -15,7 +15,7 @@ SITE = os.path.join(ROOT, 'site')
 
 # Links shown in the site header and footer. Leave a value empty to hide it.
 REPO_URL = 'https://github.com/priyankaparab-87/tessera'
-FIGMA_URL = ''
+FIGMA_URL = 'https://www.figma.com/community/file/1704195448507830727/tessera'
 AUTHOR_URL = 'https://priyanka-personal-portfolio.pages.dev/'
 
 REACT = 'https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js'

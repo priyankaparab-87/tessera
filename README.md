@@ -8,6 +8,8 @@ A calm, dense design system for internal tools and data-heavy web apps: queues, 
 
 **Docs:** https://tessera-4df.pages.dev. Start with [For developers](https://tessera-4df.pages.dev/developers) or [For designers](https://tessera-4df.pages.dev/designers).
 
+**Figma:** [Tessera on Figma Community](https://www.figma.com/community/file/1704195448507830727/tessera)
+
 ## Use it
 
 Tessera is plain files. There is no package to install and no build step. Copy `dist/` into your project, then:
