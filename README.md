@@ -6,7 +6,7 @@ A calm, dense design system for internal tools and data-heavy web apps: queues, 
 - Tokens for colour, type, spacing, radius, shadow and size, in light and dark
 - Four accents (indigo, cobalt, teal, graphite) and four typefaces (Geist, IBM Plex, Inter, System UI); every combination passes WCAG AA
 
-**Docs:** see the hosted site (link in the repository description). Start with `docs/developers.md` or `docs/designers.md`.
+**Docs:** https://tessera-4df.pages.dev. Start with [For developers](https://tessera-4df.pages.dev/developers) or [For designers](https://tessera-4df.pages.dev/designers).
 
 ## Use it
 

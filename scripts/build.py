@@ -14,7 +14,7 @@ DOCS = os.path.join(ROOT, 'docs')
 SITE = os.path.join(ROOT, 'site')
 
 # Links shown in the site header and footer. Leave a value empty to hide it.
-REPO_URL = ''
+REPO_URL = 'https://github.com/priyankaparab-87/tessera'
 FIGMA_URL = ''
 AUTHOR_URL = 'https://priyanka-personal-portfolio.pages.dev/'
 
@@ -316,7 +316,7 @@ def page(title, body, prefix, active, nav, description=''):
         links.append('<a class="hdr-link" href="%s">GitHub</a>' % REPO_URL)
     foot = ['Tessera is designed and built by ',
             ('<a href="%s">Priyanka Parab</a>' % AUTHOR_URL) if AUTHOR_URL else 'Priyanka Parab',
-            '. Open source under the MIT licence.']
+            '. ', ('<a href="%s">Open source</a>' % REPO_URL) if REPO_URL else 'Open source', ' under the MIT licence.']
     return """<!doctype html>
 <html lang="en">
 <head>

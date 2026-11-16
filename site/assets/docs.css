@@ -108,7 +108,7 @@ pre.code code { background: none; padding: 0; white-space: pre; overflow-wrap: n
 }
 @media (max-width: 860px) {
   .menu-btn { display: inline-block; }
-  .frame { grid-template-columns: 1fr; }
+  .frame { grid-template-columns: minmax(0, 1fr); }
   .side-wrap { display: none; position: fixed; inset: var(--header-height) 0 0 0; height: auto; z-index: 4; border-right: 0; }
   body.nav-open .side-wrap { display: block; }
   .hdr { padding: 0 var(--space-12); gap: var(--space-8); }
