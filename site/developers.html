@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For developers · Tessera</title>
+<meta name="description" content="Install Tessera, mount components, add types and theme it.">
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="tessera/tokens.css">
+<link rel="stylesheet" href="tessera/bundle.css">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="2"/><rect x="11" y="1" width="8" height="8" rx="2"/><rect x="1" y="11" width="8" height="8" rx="2"/><rect x="11" y="11" width="8" height="8" rx="2"/></svg><span>Tessera</span></a>
+  <div class="hdr-tools">
+    <label class="ctl"><span class="vh">Mode</span><select data-theme-ctl="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+    <label class="ctl"><span class="vh">Accent</span><select data-theme-ctl="accent"><option value="indigo">Indigo</option><option value="cobalt">Cobalt</option><option value="teal">Teal</option><option value="graphite">Graphite</option></select></label>
+    <label class="ctl"><span class="vh">Typeface</span><select data-theme-ctl="font"><option value="geist">Geist</option><option value="plex">IBM Plex</option><option value="inter">Inter</option><option value="system">System UI</option></select></label>
+    
+  </div>
+</header>
+<div class="frame">
+<div class="side-wrap" id="side"><nav class="side" aria-label="Docs"><div class="side-group"><a href="index.html">Overview</a><a href="developers.html" aria-current="page">For developers</a><a href="designers.html">For designers</a><a href="foundations.html">Foundations</a><a href="tokens.html">Tokens</a><a href="components/index.html">Components</a></div><div class="side-group"><p class="side-label">Foundations</p><a href="components/Themes.html">Themes</a><a href="components/Icon.html">Icon</a></div><div class="side-group"><p class="side-label">Actions</p><a href="components/Button.html">Button</a><a href="components/IconButton.html">IconButton</a><a href="components/ButtonGroup.html">ButtonGroup</a><a href="components/SplitButton.html">SplitButton</a><a href="components/ToggleButton.html">ToggleButton</a><a href="components/SegmentedControl.html">SegmentedControl</a><a href="components/Link.html">Link</a><a href="components/CopyButton.html">CopyButton</a></div><div class="side-group"><p class="side-label">Forms</p><a href="components/TextField.html">TextField</a><a href="components/TextArea.html">TextArea</a><a href="components/NumberField.html">NumberField</a><a href="components/PasswordField.html">PasswordField</a><a href="components/SearchField.html">SearchField</a><a href="components/Select.html">Select</a><a href="components/Combobox.html">Combobox</a><a href="components/MultiSelect.html">MultiSelect</a><a href="components/Checkbox.html">Checkbox</a><a href="components/CheckboxGroup.html">CheckboxGroup</a><a href="components/Radio.html">Radio</a><a href="components/RadioGroup.html">RadioGroup</a><a href="components/Switch.html">Switch</a><a href="components/Slider.html">Slider</a><a href="components/Calendar.html">Calendar</a><a href="components/DatePicker.html">DatePicker</a><a href="components/DateRangePicker.html">DateRangePicker</a><a href="components/TimePicker.html">TimePicker</a><a href="components/FileUpload.html">FileUpload</a><a href="components/InlineEdit.html">InlineEdit</a><a href="components/Fieldset.html">Fieldset</a></div><div class="side-group"><p class="side-label">Overlays</p><a href="components/Menu.html">Menu</a><a href="components/MenuButton.html">MenuButton</a><a href="components/Popover.html">Popover</a><a href="components/Tooltip.html">Tooltip</a><a href="components/Dialog.html">Dialog</a><a href="components/ConfirmDialog.html">ConfirmDialog</a><a href="components/Drawer.html">Drawer</a><a href="components/Toast.html">Toast</a><a href="components/CommandPalette.html">CommandPalette</a></div><div class="side-group"><p class="side-label">Feedback</p><a href="components/Alert.html">Alert</a><a href="components/Banner.html">Banner</a><a href="components/ProgressBar.html">ProgressBar</a><a href="components/Spinner.html">Spinner</a><a href="components/Skeleton.html">Skeleton</a><a href="components/EmptyState.html">EmptyState</a></div><div class="side-group"><p class="side-label">Navigation</p><a href="components/Tabs.html">Tabs</a><a href="components/TopNav.html">TopNav</a><a href="components/Breadcrumbs.html">Breadcrumbs</a><a href="components/Pagination.html">Pagination</a><a href="components/Stepper.html">Stepper</a><a href="components/Accordion.html">Accordion</a><a href="components/TreeView.html">TreeView</a></div><div class="side-group"><p class="side-label">App chrome</p><a href="components/AppHeader.html">AppHeader</a><a href="components/SideNav.html">SideNav</a></div><div class="side-group"><p class="side-label">Data display</p><a href="components/Table.html">Table</a><a href="components/Badge.html">Badge</a><a href="components/Tag.html">Tag</a><a href="components/TagGroup.html">TagGroup</a><a href="components/Avatar.html">Avatar</a><a href="components/AvatarGroup.html">AvatarGroup</a><a href="components/Kbd.html">Kbd</a><a href="components/CodeInline.html">CodeInline</a><a href="components/CodeBlock.html">CodeBlock</a><a href="components/CopyInline.html">CopyInline</a><a href="components/DescriptionList.html">DescriptionList</a><a href="components/Stat.html">Stat</a><a href="components/Timeline.html">Timeline</a><a href="components/Comment.html">Comment</a><a href="components/List.html">List</a></div><div class="side-group"><p class="side-label">Layout</p><a href="components/Card.html">Card</a><a href="components/Divider.html">Divider</a></div><div class="side-group"><p class="side-label">Patterns</p><a href="components/PageHeader.html">PageHeader</a><a href="components/Toolbar.html">Toolbar</a><a href="components/TableToolbar.html">TableToolbar</a><a href="components/FilterBar.html">FilterBar</a><a href="components/FilterPanel.html">FilterPanel</a><a href="components/KanbanColumn.html">KanbanColumn</a><a href="components/KanbanCard.html">KanbanCard</a></div></nav></div>
+<main id="main" class="main">
+<h1 class="title-1">For developers</h1><nav class="toc" aria-label="On this page"><a href="#1-get-the-files">Get the files</a><a href="#2a-a-plain-html-page">A plain HTML page</a><a href="#2b-an-app-with-a-bundler-vite-webpack">An app with a bundler (Vite, webpack)</a><a href="#3-typescript">TypeScript</a><a href="#4-use-the-components">Use the components</a><a href="#5-theme">Theme</a><a href="#6-tokens-in-your-own-css">Tokens in your own CSS</a><a href="#7-update">Update</a></nav><div class="doc"><p>Tessera is plain files: two stylesheets and one script that defines <code>window.Tessera</code>. It needs React 18. There is no package to install and no build step of its own.</p>
+<h2 id="1-get-the-files">1. Get the files</h2>
+<p>Copy these five files from <code>dist/</code> in the repository into your project, for example into <code>tessera/</code>:</p>
+<div class="table-wrap"><table><thead><tr><th>File</th><th>What it is</th></tr></thead><tbody><tr><td><a href="tessera/tokens.css"><code>tokens.css</code></a></td><td>Every token as a CSS variable, light and dark, plus the type classes</td></tr><tr><td><a href="tessera/bundle.css"><code>bundle.css</code></a></td><td>Component styles and the accent and typeface options. Loads the fonts from Google Fonts</td></tr><tr><td><a href="tessera/bundle.js"><code>bundle.js</code></a></td><td>The components, as <code>window.Tessera</code>. Reads <code>window.React</code></td></tr><tr><td><a href="tessera/index.d.ts"><code>index.d.ts</code></a></td><td>Types and usage notes for every component</td></tr><tr><td><a href="tessera/tokens.json"><code>tokens.json</code></a></td><td>The source of the tokens, for other tools and platforms</td></tr></tbody></table></div>
+<p>Keep your own copy rather than linking this site, so an update to Tessera never changes your app without you choosing it.</p>
+<h2 id="2a-a-plain-html-page">2a. A plain HTML page</h2>
+<p>Load React 18 before <code>bundle.js</code>, and the two stylesheets in this order.</p>
+<pre class="code" data-lang="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;tessera/tokens.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;tessera/bundle.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;tessera/bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  const T = window.Tessera, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById(&#x27;root&#x27;)).render(
+    h(T.Button, { variant: &#x27;primary&#x27;, iconStart: &#x27;plus&#x27; }, &#x27;Create case&#x27;)
+  );
+&lt;/script&gt;</code></pre>
+<h2 id="2b-an-app-with-a-bundler-vite-webpack">2b. An app with a bundler (Vite, webpack)</h2>
+<p>Install React 18 from npm, then put React on <code>window</code> before the bundle runs. Imports run in order, so a one-line module imported first is enough.</p>
+<pre class="code" data-lang="sh"><code>npm install react@18 react-dom@18</code></pre>
+<pre class="code" data-lang="js"><code>// src/tessera-react.js
+import React from &#x27;react&#x27;;
+window.React = React;</code></pre>
+<pre class="code" data-lang="jsx"><code>// src/main.jsx
+import &#x27;./tessera-react.js&#x27;;      // must come before the bundle
+import &#x27;./tessera/bundle.js&#x27;;
+import &#x27;./tessera/tokens.css&#x27;;
+import &#x27;./tessera/bundle.css&#x27;;
+import { createRoot } from &#x27;react-dom/client&#x27;;
+
+const { Button, Badge } = window.Tessera;
+
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Button variant=&quot;primary&quot; iconStart=&quot;plus&quot;&gt;Create case&lt;/Button&gt;
+      &lt;Badge tone=&quot;success&quot;&gt;Paid&lt;/Badge&gt;
+    &lt;/&gt;
+  );
+}
+
+createRoot(document.getElementById(&#x27;root&#x27;)).render(&lt;App /&gt;);</code></pre>
+<h2 id="3-typescript">3. TypeScript</h2>
+<p>Add one declaration file so <code>window.Tessera</code> is typed. Props are then checked and the usage notes show on hover.</p>
+<pre class="code" data-lang="ts"><code>// src/tessera-global.d.ts
+import type * as TesseraTypes from &#x27;./tessera/index&#x27;;
+declare global {
+  interface Window { Tessera: typeof TesseraTypes }
+}
+export {};</code></pre>
+<h2 id="4-use-the-components">4. Use the components</h2>
+<ul><li>Every component is on <code>window.Tessera</code> under the name shown in <a href="components/index.html">Components</a>: <code>Button</code>, <code>TextField</code>, <code>Table</code> and so on.</li><li>Each component page lists its props and says when to use it, what to use instead, and do and don't.</li><li>Not sure which one fits? Start from <a href="components/index.html#picking-a-component">Picking a component</a>.</li><li>Icons are Tessera's own set. Pass a name such as <code>iconStart=&quot;plus&quot;</code>, or render <code>&lt;Icon name=&quot;search&quot; /&gt;</code>. The <a href="components/Icon.html">Icon</a> page shows every name.</li></ul>
+<h2 id="5-theme">5. Theme</h2>
+<p>Set attributes on <code>&lt;html&gt;</code>, or on any container to theme just that part:</p>
+<pre class="code" data-lang="html"><code>&lt;html data-theme=&quot;dark&quot; data-accent=&quot;teal&quot; data-font=&quot;geist&quot;&gt;</code></pre>
+<p>Or switch at runtime:</p>
+<pre class="code" data-lang="js"><code>Tessera.setTheme({ accent: &#x27;teal&#x27;, font: &#x27;inter&#x27;, mode: &#x27;dark&#x27; });
+Tessera.getTheme();   // { accent, font, mode }
+Tessera.themes;       // the options, for building a switcher</code></pre>
+<ul><li>Modes: <code>light</code> (default), <code>dark</code>. Accents: <code>indigo</code> (default), <code>cobalt</code>, <code>teal</code>, <code>graphite</code>. Typefaces: <code>geist</code> (default), <code>plex</code>, <code>inter</code>, <code>system</code>.</li><li><code>setTheme</code> remembers accent and typeface in the browser. It never remembers mode, so set <code>data-theme</code> from your own setting.</li><li>Try the combinations on <a href="components/Themes.html">Themes</a>.</li></ul>
+<h2 id="6-tokens-in-your-own-css">6. Tokens in your own CSS</h2>
+<p>When you build something Tessera doesn't have, use the tokens, never raw values:</p>
+<pre class="code" data-lang="css"><code>.order-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16);
+  color: var(--text);
+  font: var(--text-ui);
+}</code></pre>
+<p>Type also comes as classes: <code>title-1</code> to <code>title-4</code>, <code>body</code>, <code>ui</code>, <code>ui-strong</code>, <code>small</code>, <code>small-strong</code>, <code>mono</code> and the <code>num-*</code> styles for figures. Every token is on <a href="tokens.html">Tokens</a>.</p>
+<h2 id="7-update">7. Update</h2>
+<p>Replace the five files with the new ones from <code>dist/</code>. <code>tokens.css</code> is generated from <code>tokens.json</code> by <code>python3 scripts/build.py</code>; edit <code>tokens.json</code>, never <code>tokens.css</code>.</p></div>
+<footer class="foot">Tessera is designed and built by <a href="https://priyanka-personal-portfolio.pages.dev/">Priyanka Parab</a>. Open source under the MIT licence.</footer>
+</main>
+</div>
+<script src="assets/docs.js"></script>
+</body>
+</html>

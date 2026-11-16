@@ -122,3 +122,4 @@ pre.code code { background: none; padding: 0; white-space: pre; overflow-wrap: n
   .main h2 { margin-top: var(--space-24); }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+.doc td:first-child code { white-space: nowrap; }

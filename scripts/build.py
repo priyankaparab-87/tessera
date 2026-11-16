@@ -82,6 +82,9 @@ def build_tokens_css(t):
 
 # --------------------------------------------------------------------------- markdown
 def inline(s):
+    m = re.search(r'\[([^\]]+)\]\(([^)\s]+)\)', s)
+    if m:
+        return inline(s[:m.start()]) + '<a href="%s">%s</a>' % (esc(m.group(2)), inline(m.group(1))) + inline(s[m.end():])
     parts = re.split(r'(`[^`]+`)', s)
     res = []
     for p in parts:
@@ -89,7 +92,6 @@ def inline(s):
             res.append('<code>%s</code>' % esc(p[1:-1]))
             continue
         p = esc(p, quote=False)
-        p = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)', r'<a href="\2">\1</a>', p)
         p = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', p)
         p = re.sub(r'(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])', r'<em>\1</em>', p)
         res.append(p)
@@ -297,7 +299,8 @@ def page(title, body, prefix, active, nav, description=''):
         return '<a href="%s%s"%s>%s</a>' % (prefix, href, cur, esc(label))
     side = ['<nav class="side" aria-label="Docs">',
             '<div class="side-group">', link('index.html', 'Overview', 'overview'),
-            link('get-started.html', 'Get started', 'get-started'),
+            link('developers.html', 'For developers', 'developers'),
+            link('designers.html', 'For designers', 'designers'),
             link('foundations.html', 'Foundations', 'foundations'),
             link('tokens.html', 'Tokens', 'tokens'),
             link('components/index.html', 'Components', 'components'), '</div>']
@@ -519,7 +522,8 @@ def main():
 <section class="cover">{svg}<div class="cover-words"><h1 class="cover-name">Tessera</h1><p class="cover-tag">{tag}</p></div></section>
 <div class="doc">{intro}</div>
 <div class="cards">
-  <a class="card" href="get-started.html"><span class="title-4">Get started</span><span class="muted">Add two stylesheets and a script. No build step.</span></a>
+  <a class="card" href="developers.html"><span class="title-4">For developers</span><span class="muted">Install, mount components, type and theme them.</span></a>
+  <a class="card" href="designers.html"><span class="title-4">For designers</span><span class="muted">Get the Figma library, pick a theme, hand off.</span></a>
   <a class="card" href="foundations.html"><span class="title-4">Foundations</span><span class="muted">Content, colour, type, space, states and icons.</span></a>
   <a class="card" href="tokens.html"><span class="title-4">Tokens</span><span class="muted">Every colour, type style, space, radius and shadow.</span></a>
   <a class="card" href="components/index.html"><span class="title-4">{n} components</span><span class="muted">Live previews with when to use, do and don't.</span></a>
@@ -528,46 +532,23 @@ def main():
 """.format(svg=svg, tag=tagline, intro=md(intro), n=n_comp)
     write('index.html', page('Tessera — a design system for internal tools', overview, '', 'overview', nav, tagline))
 
-    # Get started
-    gs = """
-<h1 class="title-1">Get started</h1>
-<p class="lede">Tessera ships as plain files: <code>tokens.css</code>, <code>bundle.css</code> and <code>bundle.js</code>, which defines <code>window.Tessera</code>. It needs React 18 on the page. There is no package to install and no build step.</p>
-<h2 id="add-to-a-page">Add it to a page</h2>
-<pre class="code"><code>&lt;link rel="stylesheet" href="<span data-origin></span>/tessera/tokens.css"&gt;
-&lt;link rel="stylesheet" href="<span data-origin></span>/tessera/bundle.css"&gt;
-&lt;script src="{react}"&gt;&lt;/script&gt;
-&lt;script src="{react_dom}"&gt;&lt;/script&gt;
-&lt;script src="<span data-origin></span>/tessera/bundle.js"&gt;&lt;/script&gt;</code></pre>
-<p>For anything you ship, copy the files from <code>dist/</code> in the repository into your project instead of linking this site.</p>
-<h2 id="mount-a-component">Mount a component</h2>
-<pre class="code"><code>const T = window.Tessera, h = React.createElement;
-ReactDOM.createRoot(document.getElementById('root')).render(
-  h(T.Button, {{ variant: 'primary', iconStart: 'plus' }}, 'Create case')
-);</code></pre>
-<p>Every component, with its props and guidelines, is in <a href="components/index.html">Components</a>. <code>index.d.ts</code> has the same guidance as TypeScript hover docs.</p>
-<h2 id="theme">Theme</h2>
-<pre class="code"><code>&lt;html data-theme="dark" data-accent="teal" data-font="geist"&gt;
-
-// or at runtime
-Tessera.setTheme({{ accent: 'teal', font: 'inter' }});</code></pre>
-<p>Modes: <code>light</code>, <code>dark</code>. Accents: <code>indigo</code> (default), <code>cobalt</code>, <code>teal</code>, <code>graphite</code>. Typefaces: <code>geist</code> (default), <code>plex</code>, <code>inter</code>, <code>system</code>. See <a href="components/Themes.html">Themes</a>.</p>
-<h2 id="files">Files</h2>
-<div class="table-wrap"><table><thead><tr><th>File</th><th>What it is</th></tr></thead><tbody>
-<tr><td><a href="tessera/tokens.css"><code>tokens.css</code></a></td><td>Every token as a CSS variable, light and dark, plus the type classes.</td></tr>
-<tr><td><a href="tessera/bundle.css"><code>bundle.css</code></a></td><td>Component styles, accent and typeface options. Loads the fonts from Google Fonts.</td></tr>
-<tr><td><a href="tessera/bundle.js"><code>bundle.js</code></a></td><td>The components, as <code>window.Tessera</code>. Needs <code>window.React</code> and <code>window.ReactDOM</code> 18.</td></tr>
-<tr><td><a href="tessera/index.d.ts"><code>index.d.ts</code></a></td><td>Types and usage notes for every component.</td></tr>
-<tr><td><a href="tessera/tokens.json"><code>tokens.json</code></a></td><td>The source of the tokens, for design tools and other platforms.</td></tr>
-</tbody></table></div>
-<h2 id="rules">Rules for building with Tessera</h2>
-<div class="doc">{rules}</div>
-""".format(react=REACT, react_dom=REACT_DOM, rules=md(sec.get('Rules for agents building with Tessera', '').split('\n', 1)[1]))
-    write('get-started.html', page('Get started · Tessera', gs, '', 'get-started', nav, 'Add Tessera to a page and mount a component.'))
+    # Guides for developers and designers (docs/developers.md, docs/designers.md)
+    figma = ('[Open Tessera on Figma Community](%s).' % FIGMA_URL) if FIGMA_URL else \
+        'The library is being published to Figma Community; the link will be here.'
+    for key, desc in [('developers', 'Install Tessera, mount components, add types and theme it.'),
+                      ('designers', 'Get the Tessera Figma library, pick a theme, choose components and hand off.')]:
+        src = open(os.path.join(DOCS, key + '.md')).read().replace('FIGMA_LINK', figma)
+        title = re.match(r'#\s+(.*)', src).group(1)
+        body = re.sub(r'^#\s+.*\n', '', src, count=1)
+        toc = ''.join('<a href="#%s">%s</a>' % (slug(t), esc(re.sub(r'^\d+[a-z]?\.\s*', '', t)))
+                      for t in re.findall(r'^##\s+(.*)$', body, re.M))
+        html_ = '<h1 class="title-1">%s</h1><nav class="toc" aria-label="On this page">%s</nav><div class="doc">%s</div>' % (esc(title), toc, md(body))
+        write(key + '.html', page('%s · Tessera' % title, html_, '', key, nav, desc))
 
     # Foundations
     fparts = ['<h1 class="title-1">Foundations</h1>']
     toc = []
-    for title in ['Content fundamentals', 'Visual foundations', 'Iconography']:
+    for title in ['Content fundamentals', 'Visual foundations', 'Iconography', 'Rules for agents building with Tessera']:
         if title in sec:
             fparts.append('<div class="doc">%s</div>' % md(sec[title]))
             toc.append('<a href="#%s">%s</a>' % (slug(title), esc(title)))

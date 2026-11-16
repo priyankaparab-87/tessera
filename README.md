@@ -6,7 +6,7 @@ A calm, dense design system for internal tools and data-heavy web apps: queues, 
 - Tokens for colour, type, spacing, radius, shadow and size, in light and dark
 - Four accents (indigo, cobalt, teal, graphite) and four typefaces (Geist, IBM Plex, Inter, System UI); every combination passes WCAG AA
 
-**Docs:** see the hosted site (link in the repository description).
+**Docs:** see the hosted site (link in the repository description). Start with `docs/developers.md` or `docs/designers.md`.
 
 ## Use it
 
@@ -38,7 +38,7 @@ Theme with attributes on `<html>` (`data-theme`, `data-accent`, `data-font`) or 
 | `dist/bundle.css` | Component styles, accent and typeface options (loads fonts from Google Fonts) |
 | `dist/bundle.js` | The components, as `window.Tessera`; needs React 18 on the page |
 | `dist/index.d.ts` | Types and usage notes for every component |
-| `docs/` | The brand book (`README.md`) and each component's guidelines and preview |
+| `docs/` | The brand book (`README.md`), the guides for developers and designers, and each component's guidelines and preview |
 | `scripts/build.py` | Builds `dist/tokens.css` and the docs site into `site/` |
 | `site/` | The built docs site, deployed as is |
 
