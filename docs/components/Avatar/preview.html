@@ -1,0 +1,15 @@
+<!-- @dsCard group="Data display" height=72 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Avatar preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',padding:'16px'}},
+    h(T.Avatar,{name:'Priya Raman',size:24}), h(T.Avatar,{name:'Lina Park'}), h(T.Avatar,{name:'Tom Becker',size:40})));
+</script>
+</body>
+</html>

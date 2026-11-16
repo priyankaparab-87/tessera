@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=460 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CommandPalette preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{height:'440px'}},h(T.CommandPalette,{inline:true,groups:[{title:'Go to',items:[{label:'Cases',icon:'board',shortcut:'G C'},{label:'Customers',icon:'users',shortcut:'G U'},{label:'Reports',icon:'grid'}]},{title:'Actions',items:[{label:'Create case',icon:'plus',shortcut:'C'},{label:'Assign to me',icon:'user'},{label:'Export current view',icon:'download'}]}]})));
+</script>
+</body>
+</html>

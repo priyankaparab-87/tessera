@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokens · Tessera</title>
+<meta name="description" content="Every Tessera token.">
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="tessera/tokens.css">
+<link rel="stylesheet" href="tessera/bundle.css">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="2"/><rect x="11" y="1" width="8" height="8" rx="2"/><rect x="1" y="11" width="8" height="8" rx="2"/><rect x="11" y="11" width="8" height="8" rx="2"/></svg><span>Tessera</span></a>
+  <div class="hdr-tools">
+    <label class="ctl"><span class="vh">Mode</span><select data-theme-ctl="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+    <label class="ctl"><span class="vh">Accent</span><select data-theme-ctl="accent"><option value="indigo">Indigo</option><option value="cobalt">Cobalt</option><option value="teal">Teal</option><option value="graphite">Graphite</option></select></label>
+    <label class="ctl"><span class="vh">Typeface</span><select data-theme-ctl="font"><option value="geist">Geist</option><option value="plex">IBM Plex</option><option value="inter">Inter</option><option value="system">System UI</option></select></label>
+    
+  </div>
+</header>
+<div class="frame">
+<div class="side-wrap" id="side"><nav class="side" aria-label="Docs"><div class="side-group"><a href="index.html">Overview</a><a href="get-started.html">Get started</a><a href="foundations.html">Foundations</a><a href="tokens.html" aria-current="page">Tokens</a><a href="components/index.html">Components</a></div><div class="side-group"><p class="side-label">Foundations</p><a href="components/Themes.html">Themes</a><a href="components/Icon.html">Icon</a></div><div class="side-group"><p class="side-label">Actions</p><a href="components/Button.html">Button</a><a href="components/IconButton.html">IconButton</a><a href="components/ButtonGroup.html">ButtonGroup</a><a href="components/SplitButton.html">SplitButton</a><a href="components/ToggleButton.html">ToggleButton</a><a href="components/SegmentedControl.html">SegmentedControl</a><a href="components/Link.html">Link</a><a href="components/CopyButton.html">CopyButton</a></div><div class="side-group"><p class="side-label">Forms</p><a href="components/TextField.html">TextField</a><a href="components/TextArea.html">TextArea</a><a href="components/NumberField.html">NumberField</a><a href="components/PasswordField.html">PasswordField</a><a href="components/SearchField.html">SearchField</a><a href="components/Select.html">Select</a><a href="components/Combobox.html">Combobox</a><a href="components/MultiSelect.html">MultiSelect</a><a href="components/Checkbox.html">Checkbox</a><a href="components/CheckboxGroup.html">CheckboxGroup</a><a href="components/Radio.html">Radio</a><a href="components/RadioGroup.html">RadioGroup</a><a href="components/Switch.html">Switch</a><a href="components/Slider.html">Slider</a><a href="components/Calendar.html">Calendar</a><a href="components/DatePicker.html">DatePicker</a><a href="components/DateRangePicker.html">DateRangePicker</a><a href="components/TimePicker.html">TimePicker</a><a href="components/FileUpload.html">FileUpload</a><a href="components/InlineEdit.html">InlineEdit</a><a href="components/Fieldset.html">Fieldset</a></div><div class="side-group"><p class="side-label">Overlays</p><a href="components/Menu.html">Menu</a><a href="components/MenuButton.html">MenuButton</a><a href="components/Popover.html">Popover</a><a href="components/Tooltip.html">Tooltip</a><a href="components/Dialog.html">Dialog</a><a href="components/ConfirmDialog.html">ConfirmDialog</a><a href="components/Drawer.html">Drawer</a><a href="components/Toast.html">Toast</a><a href="components/CommandPalette.html">CommandPalette</a></div><div class="side-group"><p class="side-label">Feedback</p><a href="components/Alert.html">Alert</a><a href="components/Banner.html">Banner</a><a href="components/ProgressBar.html">ProgressBar</a><a href="components/Spinner.html">Spinner</a><a href="components/Skeleton.html">Skeleton</a><a href="components/EmptyState.html">EmptyState</a></div><div class="side-group"><p class="side-label">Navigation</p><a href="components/Tabs.html">Tabs</a><a href="components/TopNav.html">TopNav</a><a href="components/Breadcrumbs.html">Breadcrumbs</a><a href="components/Pagination.html">Pagination</a><a href="components/Stepper.html">Stepper</a><a href="components/Accordion.html">Accordion</a><a href="components/TreeView.html">TreeView</a></div><div class="side-group"><p class="side-label">App chrome</p><a href="components/AppHeader.html">AppHeader</a><a href="components/SideNav.html">SideNav</a></div><div class="side-group"><p class="side-label">Data display</p><a href="components/Table.html">Table</a><a href="components/Badge.html">Badge</a><a href="components/Tag.html">Tag</a><a href="components/TagGroup.html">TagGroup</a><a href="components/Avatar.html">Avatar</a><a href="components/AvatarGroup.html">AvatarGroup</a><a href="components/Kbd.html">Kbd</a><a href="components/CodeInline.html">CodeInline</a><a href="components/CodeBlock.html">CodeBlock</a><a href="components/CopyInline.html">CopyInline</a><a href="components/DescriptionList.html">DescriptionList</a><a href="components/Stat.html">Stat</a><a href="components/Timeline.html">Timeline</a><a href="components/Comment.html">Comment</a><a href="components/List.html">List</a></div><div class="side-group"><p class="side-label">Layout</p><a href="components/Card.html">Card</a><a href="components/Divider.html">Divider</a></div><div class="side-group"><p class="side-label">Patterns</p><a href="components/PageHeader.html">PageHeader</a><a href="components/Toolbar.html">Toolbar</a><a href="components/TableToolbar.html">TableToolbar</a><a href="components/FilterBar.html">FilterBar</a><a href="components/FilterPanel.html">FilterPanel</a><a href="components/KanbanColumn.html">KanbanColumn</a><a href="components/KanbanCard.html">KanbanCard</a></div></nav></div>
+<main id="main" class="main">
+<h1 class="title-1">Tokens</h1>
+<p class="lede">Every value Tessera uses, as CSS variables in <code>tokens.css</code>. Swatches follow the mode and accent you pick in the header. Source: <code>tokens.json</code>.</p>
+<h2 id="semantic-colour">Semantic colour</h2>
+<p>Use these in product UI. They switch with <code>data-theme</code> and the accent options.</p>
+<div class="table-wrap"><table class="tok"><thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Usage</th></tr></thead><tbody>
+<tr><td><span class="sw" style="background:var(--bg-page)"></span><code>bg-page</code></td><td class="val"><code>#fafafa</code></td><td class="val"><code>#0f0f11</code></td><td>Page ground behind cards and panels.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface)"></span><code>surface</code></td><td class="val"><code>#ffffff</code></td><td class="val"><code>#18181b</code></td><td>Cards, app header, inputs, table body.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface-raised)"></span><code>surface-raised</code></td><td class="val"><code>#ffffff</code></td><td class="val"><code>#1f1f23</code></td><td>Menus, popovers, dialogs, drawers, toasts: anything that floats above surface.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface-muted)"></span><code>surface-muted</code></td><td class="val"><code>#f4f4f5</code></td><td class="val"><code>#27272b</code></td><td>Board columns, table header row, read-only and disabled fields, skeletons.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface-hover)"></span><code>surface-hover</code></td><td class="val"><code>rgba(24,24,27,0.05)</code></td><td class="val"><code>rgba(255,255,255,0.06)</code></td><td>Hover tint on transparent controls, menu items and table rows.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface-active)"></span><code>surface-active</code></td><td class="val"><code>rgba(24,24,27,0.09)</code></td><td class="val"><code>rgba(255,255,255,0.11)</code></td><td>Pressed tint on transparent controls.</td></tr>
+<tr><td><span class="sw" style="background:var(--surface-inverse)"></span><code>surface-inverse</code></td><td class="val"><code>#18181b</code></td><td class="val"><code>#e9e9ec</code></td><td>Tooltips and toasts.</td></tr>
+<tr><td><span class="sw" style="background:var(--scrim)"></span><code>scrim</code></td><td class="val"><code>rgba(15,15,17,0.48)</code></td><td class="val"><code>rgba(0,0,0,0.64)</code></td><td>Overlay behind dialogs, drawers and the command palette.</td></tr>
+<tr><td><span class="sw" style="background:var(--border)"></span><code>border</code></td><td class="val"><code>#dcdce0</code></td><td class="val"><code>#323238</code></td><td>Card, panel, table and menu borders (decorative, not a control edge).</td></tr>
+<tr><td><span class="sw" style="background:var(--border-subtle)"></span><code>border-subtle</code></td><td class="val"><code>#e9e9ec</code></td><td class="val"><code>#27272b</code></td><td>Row dividers and section rules inside a card.</td></tr>
+<tr><td><span class="sw" style="background:var(--border-control)"></span><code>border-control</code></td><td class="val"><code>#7c7c86</code></td><td class="val"><code>#7c7c86</code></td><td>Edges of inputs, selects, checkboxes, radios, switches. 3:1 on surface and bg-page in both themes.</td></tr>
+<tr><td><span class="sw" style="background:var(--focus-ring)"></span><code>focus-ring</code></td><td class="val"><code>#4f46e5</code></td><td class="val"><code>#a6acfb</code></td><td>2px focus ring outside every interactive element, 2px offset. 3:1+ on every surface.</td></tr>
+<tr><td><span class="sw" style="background:var(--text)"></span><code>text</code></td><td class="val"><code>#18181b</code></td><td class="val"><code>#f4f4f5</code></td><td>Body and title text on surface, surface-raised, surface-muted and bg-page.</td></tr>
+<tr><td><span class="sw" style="background:var(--text-subtle)"></span><code>text-subtle</code></td><td class="val"><code>#45454d</code></td><td class="val"><code>#dcdce0</code></td><td>Secondary text and labels on surface, surface-muted and bg-page.</td></tr>
+<tr><td><span class="sw" style="background:var(--text-muted)"></span><code>text-muted</code></td><td class="val"><code>#5f5f69</code></td><td class="val"><code>#b9b9c0</code></td><td>Metadata, timestamps, placeholders, helper text on surface, surface-muted and bg-page.</td></tr>
+<tr><td><span class="sw" style="background:var(--text-disabled)"></span><code>text-disabled</code></td><td class="val"><code>#7c7c86</code></td><td class="val"><code>#7c7c86</code></td><td>Disabled labels only (exempt from contrast minimums).</td></tr>
+<tr><td><span class="sw" style="background:var(--text-accent)"></span><code>text-accent</code></td><td class="val"><code>#4f46e5</code></td><td class="val"><code>#a6acfb</code></td><td>Links and selected labels on surface, bg-page and accent-subtle.</td></tr>
+<tr><td><span class="sw" style="background:var(--text-inverse)"></span><code>text-inverse</code></td><td class="val"><code>#f4f4f5</code></td><td class="val"><code>#18181b</code></td><td>Text on surface-inverse (tooltips, toasts).</td></tr>
+<tr><td><span class="sw" style="background:var(--accent)"></span><code>accent</code></td><td class="val"><code>#4f46e5</code></td><td class="val"><code>#838af7</code></td><td>Primary button fill, checked controls, selected-tab bar, slider and progress fill.</td></tr>
+<tr><td><span class="sw" style="background:var(--accent-hover)"></span><code>accent-hover</code></td><td class="val"><code>#4036c4</code></td><td class="val"><code>#c4c8fd</code></td><td>Hover on accent fills.</td></tr>
+<tr><td><span class="sw" style="background:var(--on-accent)"></span><code>on-accent</code></td><td class="val"><code>#ffffff</code></td><td class="val"><code>#0f0f11</code></td><td>Text and icons on accent and accent-hover.</td></tr>
+<tr><td><span class="sw" style="background:var(--accent-subtle)"></span><code>accent-subtle</code></td><td class="val"><code>#eef0ff</code></td><td class="val"><code>#232052</code></td><td>Selected rows and nav items, accent badges, today in calendars.</td></tr>
+<tr><td><span class="sw" style="background:var(--info)"></span><code>info</code></td><td class="val"><code>#0868b3</code></td><td class="val"><code>#7cc4f5</code></td><td>Info text and icons on surface and info-subtle.</td></tr>
+<tr><td><span class="sw" style="background:var(--info-subtle)"></span><code>info-subtle</code></td><td class="val"><code>#e8f4fd</code></td><td class="val"><code>#0c2a40</code></td><td>Info alert, banner and badge ground.</td></tr>
+<tr><td><span class="sw" style="background:var(--success)"></span><code>success</code></td><td class="val"><code>#147844</code></td><td class="val"><code>#6fd19c</code></td><td>Success text and icons on surface and success-subtle. Always paired with a word or icon.</td></tr>
+<tr><td><span class="sw" style="background:var(--success-subtle)"></span><code>success-subtle</code></td><td class="val"><code>#e7f6ed</code></td><td class="val"><code>#0e2e1d</code></td><td>Success alert, banner and badge ground.</td></tr>
+<tr><td><span class="sw" style="background:var(--warning)"></span><code>warning</code></td><td class="val"><code>#985a00</code></td><td class="val"><code>#f5c060</code></td><td>Warning text and icons on surface and warning-subtle. Always paired with a word or icon.</td></tr>
+<tr><td><span class="sw" style="background:var(--warning-subtle)"></span><code>warning-subtle</code></td><td class="val"><code>#fdf4e1</code></td><td class="val"><code>#392708</code></td><td>Warning alert, banner and badge ground.</td></tr>
+<tr><td><span class="sw" style="background:var(--critical)"></span><code>critical</code></td><td class="val"><code>#c42b2b</code></td><td class="val"><code>#f59a96</code></td><td>Error text, destructive button fill, critical icons on surface and critical-subtle.</td></tr>
+<tr><td><span class="sw" style="background:var(--critical-hover)"></span><code>critical-hover</code></td><td class="val"><code>#a32020</code></td><td class="val"><code>#f9c0bd</code></td><td>Hover and pressed on critical fills.</td></tr>
+<tr><td><span class="sw" style="background:var(--critical-subtle)"></span><code>critical-subtle</code></td><td class="val"><code>#fdecec</code></td><td class="val"><code>#3f1515</code></td><td>Critical alert, banner and badge ground.</td></tr>
+<tr><td><span class="sw" style="background:var(--on-critical)"></span><code>on-critical</code></td><td class="val"><code>#ffffff</code></td><td class="val"><code>#0f0f11</code></td><td>Text on a critical fill.</td></tr>
+<tr><td><span class="sw" style="background:var(--new)"></span><code>new</code></td><td class="val"><code>#7a35d4</code></td><td class="val"><code>#c9a6f7</code></td><td>New, beta and discovery labels on surface and new-subtle.</td></tr>
+<tr><td><span class="sw" style="background:var(--new-subtle)"></span><code>new-subtle</code></td><td class="val"><code>#f4eefe</code></td><td class="val"><code>#2c1748</code></td><td>New badge ground.</td></tr>
+<tr><td><span class="sw" style="background:var(--info-on-inverse)"></span><code>info-on-inverse</code></td><td class="val"><code>#7cc4f5</code></td><td class="val"><code>#0868b3</code></td><td>Info and neutral icons on surface-inverse (toasts).</td></tr>
+<tr><td><span class="sw" style="background:var(--success-on-inverse)"></span><code>success-on-inverse</code></td><td class="val"><code>#6fd19c</code></td><td class="val"><code>#147844</code></td><td>Success icons on surface-inverse (toasts).</td></tr>
+<tr><td><span class="sw" style="background:var(--warning-on-inverse)"></span><code>warning-on-inverse</code></td><td class="val"><code>#f5c060</code></td><td class="val"><code>#985a00</code></td><td>Warning icons on surface-inverse (toasts).</td></tr>
+<tr><td><span class="sw" style="background:var(--critical-on-inverse)"></span><code>critical-on-inverse</code></td><td class="val"><code>#f59a96</code></td><td class="val"><code>#c42b2b</code></td><td>Critical icons on surface-inverse (toasts).</td></tr>
+</tbody></table></div>
+<h2 id="palette">Palette</h2><p>Ramps the semantic tokens point to. Reach for a semantic token first.</p><div class="ramps">
+<div class="ramp"><p class="small-strong">gray</p>
+<div class="chip"><span class="sw lg" style="background:var(--gray-0)"></span><span><code>gray-0</code><br><span class="muted">#ffffff</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-25)"></span><span><code>gray-25</code><br><span class="muted">#fafafa</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-50)"></span><span><code>gray-50</code><br><span class="muted">#f4f4f5</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-100)"></span><span><code>gray-100</code><br><span class="muted">#e9e9ec</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-200)"></span><span><code>gray-200</code><br><span class="muted">#dcdce0</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-300)"></span><span><code>gray-300</code><br><span class="muted">#b9b9c0</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-400)"></span><span><code>gray-400</code><br><span class="muted">#9b9ba4</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-500)"></span><span><code>gray-500</code><br><span class="muted">#7c7c86</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-600)"></span><span><code>gray-600</code><br><span class="muted">#5f5f69</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-700)"></span><span><code>gray-700</code><br><span class="muted">#45454d</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-750)"></span><span><code>gray-750</code><br><span class="muted">#323238</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-800)"></span><span><code>gray-800</code><br><span class="muted">#27272b</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-850)"></span><span><code>gray-850</code><br><span class="muted">#1f1f23</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-900)"></span><span><code>gray-900</code><br><span class="muted">#18181b</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--gray-950)"></span><span><code>gray-950</code><br><span class="muted">#0f0f11</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">indigo</p>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-50)"></span><span><code>indigo-50</code><br><span class="muted">#eef0ff</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-100)"></span><span><code>indigo-100</code><br><span class="muted">#e0e3ff</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-200)"></span><span><code>indigo-200</code><br><span class="muted">#c4c8fd</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-300)"></span><span><code>indigo-300</code><br><span class="muted">#a6acfb</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-400)"></span><span><code>indigo-400</code><br><span class="muted">#838af7</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-500)"></span><span><code>indigo-500</code><br><span class="muted">#6366f1</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-600)"></span><span><code>indigo-600</code><br><span class="muted">#4f46e5</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-700)"></span><span><code>indigo-700</code><br><span class="muted">#4036c4</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--indigo-900)"></span><span><code>indigo-900</code><br><span class="muted">#232052</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">sky</p>
+<div class="chip"><span class="sw lg" style="background:var(--sky-50)"></span><span><code>sky-50</code><br><span class="muted">#e8f4fd</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--sky-300)"></span><span><code>sky-300</code><br><span class="muted">#7cc4f5</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--sky-600)"></span><span><code>sky-600</code><br><span class="muted">#0868b3</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--sky-900)"></span><span><code>sky-900</code><br><span class="muted">#0c2a40</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">green</p>
+<div class="chip"><span class="sw lg" style="background:var(--green-50)"></span><span><code>green-50</code><br><span class="muted">#e7f6ed</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--green-300)"></span><span><code>green-300</code><br><span class="muted">#6fd19c</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--green-600)"></span><span><code>green-600</code><br><span class="muted">#147844</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--green-900)"></span><span><code>green-900</code><br><span class="muted">#0e2e1d</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">amber</p>
+<div class="chip"><span class="sw lg" style="background:var(--amber-50)"></span><span><code>amber-50</code><br><span class="muted">#fdf4e1</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--amber-300)"></span><span><code>amber-300</code><br><span class="muted">#f5c060</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--amber-600)"></span><span><code>amber-600</code><br><span class="muted">#985a00</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--amber-900)"></span><span><code>amber-900</code><br><span class="muted">#392708</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">red</p>
+<div class="chip"><span class="sw lg" style="background:var(--red-50)"></span><span><code>red-50</code><br><span class="muted">#fdecec</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--red-200)"></span><span><code>red-200</code><br><span class="muted">#f9c0bd</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--red-300)"></span><span><code>red-300</code><br><span class="muted">#f59a96</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--red-600)"></span><span><code>red-600</code><br><span class="muted">#c42b2b</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--red-700)"></span><span><code>red-700</code><br><span class="muted">#a32020</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--red-900)"></span><span><code>red-900</code><br><span class="muted">#3f1515</span></span></div>
+</div>
+<div class="ramp"><p class="small-strong">violet</p>
+<div class="chip"><span class="sw lg" style="background:var(--violet-50)"></span><span><code>violet-50</code><br><span class="muted">#f4eefe</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--violet-300)"></span><span><code>violet-300</code><br><span class="muted">#c9a6f7</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--violet-600)"></span><span><code>violet-600</code><br><span class="muted">#7a35d4</span></span></div>
+<div class="chip"><span class="sw lg" style="background:var(--violet-900)"></span><span><code>violet-900</code><br><span class="muted">#2c1748</span></span></div>
+</div>
+</div>
+<h2 id="type">Type</h2><div class="table-wrap"><table class="tok"><thead><tr><th>Style</th><th>Size / line</th><th>Weight</th><th>Usage</th></tr></thead><tbody>
+<tr><td><div class="title-1">Order desk</div><code>title-1</code></td><td><code>24px / 32px</code></td><td><code>600</code></td><td>Page title on landing and overview pages. One per page.</td></tr>
+<tr><td><div class="title-2">Customer details</div><code>title-2</code></td><td><code>20px / 28px</code></td><td><code>600</code></td><td>Page title (PageHeader).</td></tr>
+<tr><td><div class="title-3">Associated company</div><code>title-3</code></td><td><code>16px / 24px</code></td><td><code>600</code></td><td>Dialog and drawer titles.</td></tr>
+<tr><td><div class="title-4">5 cases</div><code>title-4</code></td><td><code>14px / 20px</code></td><td><code>600</code></td><td>Card titles, section headers, fieldset legends, board column headers.</td></tr>
+<tr><td><div class="body">A case tracks one customer request from open to closed.</div><code>body</code></td><td><code>14px / 22px</code></td><td><code>400</code></td><td>Multi-line prose: descriptions, dialog body, comments, docs. Same size as ui with a looser line height.</td></tr>
+<tr><td><div class="ui">Refund requested for a damaged item</div><code>ui</code></td><td><code>14px / 20px</code></td><td><code>400</code></td><td>The workhorse: table cells, field values, card content, menus.</td></tr>
+<tr><td><div class="ui-strong">Assignee</div><code>ui-strong</code></td><td><code>14px / 20px</code></td><td><code>600</code></td><td>Field labels, button labels, tab labels, emphasised values.</td></tr>
+<tr><td><div class="small">Updated 2 Sep 2026, 10:12</div><code>small</code></td><td><code>12px / 16px</code></td><td><code>400</code></td><td>Helper text and timestamps. Never for body copy.</td></tr>
+<tr><td><div class="small-strong">High</div><code>small-strong</code></td><td><code>12px / 16px</code></td><td><code>500</code></td><td>Badge, tag and count labels; column headers in dense tables.</td></tr>
+<tr><td><div class="num-display">€12,480.00</div><code>num-display</code></td><td><code>24px / 32px</code></td><td><code>600</code></td><td>Stat values and other headline figures.</td></tr>
+<tr><td><div class="num-ui">1,284 · 2 Sep 2026, 10:12</div><code>num-ui</code></td><td><code>14px / 20px</code></td><td><code>400</code></td><td>Amounts, counts, dates and times in table cells, fields and lists. Tabular figures.</td></tr>
+<tr><td><div class="num-ui-strong">€1,240.00</div><code>num-ui-strong</code></td><td><code>14px / 20px</code></td><td><code>600</code></td><td>Totals and emphasised figures.</td></tr>
+<tr><td><div class="num-small">+12% vs last week</div><code>num-small</code></td><td><code>12px / 16px</code></td><td><code>400</code></td><td>Deltas, timestamps and progress values.</td></tr>
+<tr><td><div class="num-small-strong">128</div><code>num-small-strong</code></td><td><code>12px / 16px</code></td><td><code>500</code></td><td>Counts on tabs, nav items and badges.</td></tr>
+<tr><td><div class="mono">org_7Q2M9X4KD1</div><code>mono</code></td><td><code>13px / 20px</code></td><td><code>400</code></td><td>IDs, keys and code, in Geist Mono by default. Pair with CopyButton when the value is meant to be copied.</td></tr>
+</tbody></table></div>
+<h2 id="spacing">Spacing</h2><div class="table-wrap"><table class="tok"><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody>
+<tr><td><span class="bar" style="width:var(--space-0)"></span><code>space-0</code></td><td><code>0px</code></td><td>Flush edges.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-2)"></span><code>space-2</code></td><td><code>2px</code></td><td>Gap between nav items; icon-to-text nudge inside dense controls.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-4)"></span><code>space-4</code></td><td><code>4px</code></td><td>Gap between a label and its value; badge padding block.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-6)"></span><code>space-6</code></td><td><code>6px</code></td><td>Icon-to-label gap in buttons and tabs; block padding of list rows and table headers.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-8)"></span><code>space-8</code></td><td><code>8px</code></td><td>Small button padding, table cell block padding, gap between buttons, between tight inline items.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-12)"></span><code>space-12</code></td><td><code>12px</code></td><td>Default button and field padding, table cell inline padding, gap between form fields, compact card padding.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-16)"></span><code>space-16</code></td><td><code>16px</code></td><td>Card, dialog and drawer padding; gap between cards and page sections.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-24)"></span><code>space-24</code></td><td><code>24px</code></td><td>Page gutter; gap between major page regions.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-32)"></span><code>space-32</code></td><td><code>32px</code></td><td>Empty-state padding; top padding on sparse pages.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-48)"></span><code>space-48</code></td><td><code>48px</code></td><td>Rare: spacing on landing and onboarding pages.</td></tr>
+<tr><td><span class="bar" style="width:var(--space-64)"></span><code>space-64</code></td><td><code>64px</code></td><td>Rare: hero spacing on marketing-style pages. Never inside components.</td></tr>
+</tbody></table></div>
+<h2 id="radius">Radius</h2><div class="table-wrap"><table class="tok"><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody>
+<tr><td><span class="rad" style="border-radius:var(--radius-xs)"></span><code>radius-xs</code></td><td><code>2px</code></td><td>Checkboxes, focus ring corners on tight items.</td></tr>
+<tr><td><span class="rad" style="border-radius:var(--radius-sm)"></span><code>radius-sm</code></td><td><code>4px</code></td><td>Inputs, selects, menus, tooltips, badges.</td></tr>
+<tr><td><span class="rad" style="border-radius:var(--radius-md)"></span><code>radius-md</code></td><td><code>6px</code></td><td>Buttons, icon buttons, board columns.</td></tr>
+<tr><td><span class="rad" style="border-radius:var(--radius-lg)"></span><code>radius-lg</code></td><td><code>8px</code></td><td>Cards, dialogs, tables, popovers&#x27; outer frame.</td></tr>
+<tr><td><span class="rad" style="border-radius:var(--radius-pill)"></span><code>radius-pill</code></td><td><code>999px</code></td><td>Switch tracks, avatars, count pills on tabs.</td></tr>
+</tbody></table></div>
+<h2 id="shadow">Shadow</h2><div class="table-wrap"><table class="tok"><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody>
+<tr><td><span class="shd" style="box-shadow:var(--shadow-sm)"></span><code>shadow-sm</code></td><td><code>0 1px 2px rgba(15,15,17,0.08)</code></td><td>App header, cards resting on bg-page.</td></tr>
+<tr><td><span class="shd" style="box-shadow:var(--shadow-md)"></span><code>shadow-md</code></td><td><code>0 2px 4px rgba(15,15,17,0.06), 0 6px 16px rgba(15,15,17,0.08)</code></td><td>Menus, popovers, select lists, tooltips.</td></tr>
+<tr><td><span class="shd" style="box-shadow:var(--shadow-lg)"></span><code>shadow-lg</code></td><td><code>0 8px 24px rgba(15,15,17,0.12), 0 24px 56px rgba(15,15,17,0.12)</code></td><td>Dialogs and drawers.</td></tr>
+</tbody></table></div>
+<h2 id="size">Size</h2><div class="table-wrap"><table class="tok"><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody>
+<tr><td><code>control-xs</code></td><td><code>24px</code></td><td>Inline controls inside table rows, tags and toolbars of dense panels.</td></tr>
+<tr><td><code>control-sm</code></td><td><code>28px</code></td><td>Toolbars, filter bars, table toolbars, side panels.</td></tr>
+<tr><td><code>control-md</code></td><td><code>32px</code></td><td>Default height for buttons, fields, selects, nav items and menu items.</td></tr>
+<tr><td><code>control-lg</code></td><td><code>40px</code></td><td>Tabs; the primary action on sparse pages such as sign-in or onboarding.</td></tr>
+<tr><td><code>header-height</code></td><td><code>48px</code></td><td>AppHeader height.</td></tr>
+<tr><td><code>sidenav-rail</code></td><td><code>56px</code></td><td>Collapsed SideNav width.</td></tr>
+<tr><td><code>sidenav-open</code></td><td><code>240px</code></td><td>Expanded SideNav width.</td></tr>
+</tbody></table></div>
+<footer class="foot">Tessera is designed and built by <a href="https://priyanka-personal-portfolio.pages.dev/">Priyanka Parab</a>. Open source under the MIT licence.</footer>
+</main>
+</div>
+<script src="assets/docs.js"></script>
+</body>
+</html>

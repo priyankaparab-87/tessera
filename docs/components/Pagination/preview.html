@@ -1,0 +1,14 @@
+<!-- @dsCard group="Navigation" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Pagination preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px'}},h(T.Pagination,{defaultPage:3,pageCount:13,total:312,pageSize:25}),h(T.Pagination,{label:'Pagination (short list)',defaultPage:1,pageCount:4})));
+</script>
+</body>
+</html>

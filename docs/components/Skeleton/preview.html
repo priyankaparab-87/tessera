@@ -1,0 +1,14 @@
+<!-- @dsCard group="Feedback" height=160 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Skeleton preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'16px',padding:'16px',alignItems:'flex-start'}},h(T.Skeleton,{variant:'circle',width:40,height:40}),h('div',{style:{flex:1}},h(T.Skeleton,{width:'40%'}),h(T.Skeleton,{lines:3})),h(T.Skeleton,{variant:'rect',width:200,height:96})));
+</script>
+</body>
+</html>

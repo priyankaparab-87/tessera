@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=340 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TimePicker preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px',maxWidth:'280px'}},h(T.TimePicker,{label:'Callback time',open:true,defaultValue:'10:30',step:30})));
+</script>
+</body>
+</html>

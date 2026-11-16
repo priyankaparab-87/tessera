@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=170 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>RadioGroup preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.RadioGroup,{label:'Refund method',defaultValue:'orig',options:[{value:'orig',label:'Original payment',description:'3–5 business days'},{value:'credit',label:'Store credit',description:'Available immediately'},{value:'none',label:'No refund',disabled:true}]}),h(T.RadioGroup,{label:'Priority',orientation:'horizontal',defaultValue:'m',options:[{value:'l',label:'Low'},{value:'m',label:'Medium'},{value:'h',label:'High'}]})));
+</script>
+</body>
+</html>

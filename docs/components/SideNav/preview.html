@@ -1,0 +1,16 @@
+<!-- @dsCard group="App chrome" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SideNav preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'16px',padding:'16px',alignItems:'flex-start',height:'220px'}},
+    h(T.SideNav,{items:[{id:'home',label:'Dashboard',icon:'home'},{id:'customers',label:'Customers',icon:'id-card',count:12},{id:'reports',label:'Reports',icon:'grid'},{id:'settings',label:'Settings',icon:'sliders'}]}),
+    h(T.SideNav,{collapsed:true,label:'Main (collapsed)',items:[{id:'home',label:'Dashboard',icon:'home'},{id:'customers',label:'Customers',icon:'id-card'},{id:'reports',label:'Reports',icon:'grid'}]})));
+</script>
+</body>
+</html>

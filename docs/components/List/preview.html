@@ -1,0 +1,14 @@
+<!-- @dsCard group="Data display" height=240 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>List preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.List,{bordered:true,items:[{avatar:'Dana Whitfield',title:'Dana Whitfield',description:'dana@example.com',meta:'3 cases'},{avatar:'Sam Lee',title:'Sam Lee',description:'sam@example.com',meta:'1 case'},{avatar:'Priya Raman',title:'Priya Raman',description:'priya@example.com',meta:'—'}]}),h(T.List,{bordered:true,selectable:true,items:[{icon:'file',title:'invoice-48213.pdf',description:'182 KB',selected:true},{icon:'file',title:'damage-photo-1.jpg',description:'2.4 MB'},{icon:'folder',title:'Shipping labels',description:'4 files'}]})));
+</script>
+</body>
+</html>

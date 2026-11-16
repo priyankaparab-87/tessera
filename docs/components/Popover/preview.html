@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=270 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Popover preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.Popover,{open:true,title:'Snooze case',trigger:h(T.Button,{iconStart:'clock'},'Snooze'),footer:[h(T.Button,{key:1,size:'sm'},'Cancel'),h(T.Button,{key:2,size:'sm',variant:'primary'},'Snooze')]},h(T.Select,{label:'Until',defaultValue:'Tomorrow, 09:00',options:['Tomorrow, 09:00','Next Monday','Custom…']}))));
+</script>
+</body>
+</html>

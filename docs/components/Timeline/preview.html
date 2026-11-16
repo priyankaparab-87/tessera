@@ -1,0 +1,24 @@
+<!-- @dsCard group="Data display" height=420 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Timeline preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(h('div', { style: { display: 'flex', flexDirection: 'column', gap:'24px', padding: '16px' } },
+    h(T.Timeline, { orientation: 'horizontal', label: 'Order progress', items: [
+      { title: 'Order placed', time: '1 Sep, 08:56', icon: 'check', tone: 'success' },
+      { title: 'Proof approved', time: '1 Sep, 14:20', icon: 'check', tone: 'success' },
+      { title: 'Printing', time: 'Started 2 Sep, 09:00', icon: 'refresh', tone: 'accent', current: true },
+      { title: 'Shipped', time: 'Expected 4 Sep', icon: 'upload', upcoming: true },
+      { title: 'Delivered', time: 'Expected 6 Sep', icon: 'home', upcoming: true }] }),
+    h('div', { style: { maxWidth: '520px' } }, h(T.Timeline, { label: 'Case activity', items: [
+      { title: h('span', null, h('b', null, 'Lina Park'), ' approved the credit'), time: '2 Sep, 10:12', icon: 'check', tone: 'success' },
+      { title: h('span', null, h('b', null, 'Ana Ortiz'), ' added a note'), time: '1 Sep, 17:40', avatar: 'Ana Ortiz', body: 'Customer sent photos of the damaged box.' },
+      { title: 'Priority changed to High', time: '1 Sep, 09:02', icon: 'arrow-up', tone: 'warning' },
+      { title: 'Case created from email', time: '1 Sep, 08:56', icon: 'mail' }] }))));
+</script>
+</body>
+</html>

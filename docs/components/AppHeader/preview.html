@@ -1,0 +1,14 @@
+<!-- @dsCard group="App chrome" height=90 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>AppHeader preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{padding:'16px'}}, h(T.AppHeader,{appName:'Order desk',search:true,tenant:'Production',user:'Priya Raman'})));
+</script>
+</body>
+</html>

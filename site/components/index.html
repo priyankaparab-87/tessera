@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Tessera</title>
+<meta name="description" content="Every Tessera component.">
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../tessera/tokens.css">
+<link rel="stylesheet" href="../tessera/bundle.css">
+<link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+  <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="2"/><rect x="11" y="1" width="8" height="8" rx="2"/><rect x="1" y="11" width="8" height="8" rx="2"/><rect x="11" y="11" width="8" height="8" rx="2"/></svg><span>Tessera</span></a>
+  <div class="hdr-tools">
+    <label class="ctl"><span class="vh">Mode</span><select data-theme-ctl="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+    <label class="ctl"><span class="vh">Accent</span><select data-theme-ctl="accent"><option value="indigo">Indigo</option><option value="cobalt">Cobalt</option><option value="teal">Teal</option><option value="graphite">Graphite</option></select></label>
+    <label class="ctl"><span class="vh">Typeface</span><select data-theme-ctl="font"><option value="geist">Geist</option><option value="plex">IBM Plex</option><option value="inter">Inter</option><option value="system">System UI</option></select></label>
+    
+  </div>
+</header>
+<div class="frame">
+<div class="side-wrap" id="side"><nav class="side" aria-label="Docs"><div class="side-group"><a href="../index.html">Overview</a><a href="../get-started.html">Get started</a><a href="../foundations.html">Foundations</a><a href="../tokens.html">Tokens</a><a href="../components/index.html" aria-current="page">Components</a></div><div class="side-group"><p class="side-label">Foundations</p><a href="../components/Themes.html">Themes</a><a href="../components/Icon.html">Icon</a></div><div class="side-group"><p class="side-label">Actions</p><a href="../components/Button.html">Button</a><a href="../components/IconButton.html">IconButton</a><a href="../components/ButtonGroup.html">ButtonGroup</a><a href="../components/SplitButton.html">SplitButton</a><a href="../components/ToggleButton.html">ToggleButton</a><a href="../components/SegmentedControl.html">SegmentedControl</a><a href="../components/Link.html">Link</a><a href="../components/CopyButton.html">CopyButton</a></div><div class="side-group"><p class="side-label">Forms</p><a href="../components/TextField.html">TextField</a><a href="../components/TextArea.html">TextArea</a><a href="../components/NumberField.html">NumberField</a><a href="../components/PasswordField.html">PasswordField</a><a href="../components/SearchField.html">SearchField</a><a href="../components/Select.html">Select</a><a href="../components/Combobox.html">Combobox</a><a href="../components/MultiSelect.html">MultiSelect</a><a href="../components/Checkbox.html">Checkbox</a><a href="../components/CheckboxGroup.html">CheckboxGroup</a><a href="../components/Radio.html">Radio</a><a href="../components/RadioGroup.html">RadioGroup</a><a href="../components/Switch.html">Switch</a><a href="../components/Slider.html">Slider</a><a href="../components/Calendar.html">Calendar</a><a href="../components/DatePicker.html">DatePicker</a><a href="../components/DateRangePicker.html">DateRangePicker</a><a href="../components/TimePicker.html">TimePicker</a><a href="../components/FileUpload.html">FileUpload</a><a href="../components/InlineEdit.html">InlineEdit</a><a href="../components/Fieldset.html">Fieldset</a></div><div class="side-group"><p class="side-label">Overlays</p><a href="../components/Menu.html">Menu</a><a href="../components/MenuButton.html">MenuButton</a><a href="../components/Popover.html">Popover</a><a href="../components/Tooltip.html">Tooltip</a><a href="../components/Dialog.html">Dialog</a><a href="../components/ConfirmDialog.html">ConfirmDialog</a><a href="../components/Drawer.html">Drawer</a><a href="../components/Toast.html">Toast</a><a href="../components/CommandPalette.html">CommandPalette</a></div><div class="side-group"><p class="side-label">Feedback</p><a href="../components/Alert.html">Alert</a><a href="../components/Banner.html">Banner</a><a href="../components/ProgressBar.html">ProgressBar</a><a href="../components/Spinner.html">Spinner</a><a href="../components/Skeleton.html">Skeleton</a><a href="../components/EmptyState.html">EmptyState</a></div><div class="side-group"><p class="side-label">Navigation</p><a href="../components/Tabs.html">Tabs</a><a href="../components/TopNav.html">TopNav</a><a href="../components/Breadcrumbs.html">Breadcrumbs</a><a href="../components/Pagination.html">Pagination</a><a href="../components/Stepper.html">Stepper</a><a href="../components/Accordion.html">Accordion</a><a href="../components/TreeView.html">TreeView</a></div><div class="side-group"><p class="side-label">App chrome</p><a href="../components/AppHeader.html">AppHeader</a><a href="../components/SideNav.html">SideNav</a></div><div class="side-group"><p class="side-label">Data display</p><a href="../components/Table.html">Table</a><a href="../components/Badge.html">Badge</a><a href="../components/Tag.html">Tag</a><a href="../components/TagGroup.html">TagGroup</a><a href="../components/Avatar.html">Avatar</a><a href="../components/AvatarGroup.html">AvatarGroup</a><a href="../components/Kbd.html">Kbd</a><a href="../components/CodeInline.html">CodeInline</a><a href="../components/CodeBlock.html">CodeBlock</a><a href="../components/CopyInline.html">CopyInline</a><a href="../components/DescriptionList.html">DescriptionList</a><a href="../components/Stat.html">Stat</a><a href="../components/Timeline.html">Timeline</a><a href="../components/Comment.html">Comment</a><a href="../components/List.html">List</a></div><div class="side-group"><p class="side-label">Layout</p><a href="../components/Card.html">Card</a><a href="../components/Divider.html">Divider</a></div><div class="side-group"><p class="side-label">Patterns</p><a href="../components/PageHeader.html">PageHeader</a><a href="../components/Toolbar.html">Toolbar</a><a href="../components/TableToolbar.html">TableToolbar</a><a href="../components/FilterBar.html">FilterBar</a><a href="../components/FilterPanel.html">FilterPanel</a><a href="../components/KanbanColumn.html">KanbanColumn</a><a href="../components/KanbanCard.html">KanbanCard</a></div></nav></div>
+<main id="main" class="main">
+<h1 class="title-1">Components</h1>
+<p class="lede">78 components, mounted from <code>window.Tessera</code>. Each page has a live preview, when to use it, what to use instead, and do and don't.</p>
+<h2 id="foundations">Foundations</h2><div class="cards">
+<a class="card" href="Themes.html"><span class="title-4">Themes</span><span class="muted">Switches for the accent colour and typeface, with a live WCAG check of every accent pair.</span></a>
+<a class="card" href="Icon.html"><span class="title-4">Icon</span><span class="muted">Outline icons on a 24px grid with a 1.5px stroke and round caps; they paint with `currentColor`, so set the colour on the parent.</span></a>
+</div>
+<h2 id="actions">Actions</h2><div class="cards">
+<a class="card" href="Button.html"><span class="title-4">Button</span><span class="muted">Triggers an action.</span></a>
+<a class="card" href="IconButton.html"><span class="title-4">IconButton</span><span class="muted">A square button with one icon, for compact or repeated actions (row menus, close, refresh).</span></a>
+<a class="card" href="ButtonGroup.html"><span class="title-4">ButtonGroup</span><span class="muted">Groups related buttons.</span></a>
+<a class="card" href="SplitButton.html"><span class="title-4">SplitButton</span><span class="muted">A primary action with related alternatives in an attached menu.</span></a>
+<a class="card" href="ToggleButton.html"><span class="title-4">ToggleButton</span><span class="muted">A button that stays on or off (`aria-pressed`).</span></a>
+<a class="card" href="SegmentedControl.html"><span class="title-4">SegmentedControl</span><span class="muted">Switches between 2–5 mutually exclusive views or modes of the same content.</span></a>
+<a class="card" href="Link.html"><span class="title-4">Link</span><span class="muted">Navigates somewhere.</span></a>
+<a class="card" href="CopyButton.html"><span class="title-4">CopyButton</span><span class="muted">Copies a value to the clipboard and confirms with a check for 1.6s.</span></a>
+</div>
+<h2 id="forms">Forms</h2><div class="cards">
+<a class="card" href="TextField.html"><span class="title-4">TextField</span><span class="muted">Single-line text input with label, help and error text.</span></a>
+<a class="card" href="TextArea.html"><span class="title-4">TextArea</span><span class="muted">Multi-line text.</span></a>
+<a class="card" href="NumberField.html"><span class="title-4">NumberField</span><span class="muted">Numeric input with stepper buttons.</span></a>
+<a class="card" href="PasswordField.html"><span class="title-4">PasswordField</span><span class="muted">Masked input with a show/hide toggle.</span></a>
+<a class="card" href="SearchField.html"><span class="title-4">SearchField</span><span class="muted">Text input for search with a leading search icon and a clear button once filled.</span></a>
+<a class="card" href="Select.html"><span class="title-4">Select</span><span class="muted">Pick one option from a short list (up to ~15).</span></a>
+<a class="card" href="Combobox.html"><span class="title-4">Combobox</span><span class="muted">A searchable single select for long lists (people, products, countries).</span></a>
+<a class="card" href="MultiSelect.html"><span class="title-4">MultiSelect</span><span class="muted">Pick several options; selections show as removable Tags inside the field.</span></a>
+<a class="card" href="Checkbox.html"><span class="title-4">Checkbox</span><span class="muted">Turns an option on or off as part of a form that is saved later.</span></a>
+<a class="card" href="CheckboxGroup.html"><span class="title-4">CheckboxGroup</span><span class="muted">Several independent options under one label.</span></a>
+<a class="card" href="Radio.html"><span class="title-4">Radio</span><span class="muted">A single radio; normally used through RadioGroup.</span></a>
+<a class="card" href="RadioGroup.html"><span class="title-4">RadioGroup</span><span class="muted">Pick exactly one of 2–6 visible options.</span></a>
+<a class="card" href="Switch.html"><span class="title-4">Switch</span><span class="muted">An immediate on/off setting that takes effect without a Save button.</span></a>
+<a class="card" href="Slider.html"><span class="title-4">Slider</span><span class="muted">Choose a value from a continuous range when precision matters less than feel.</span></a>
+<a class="card" href="Calendar.html"><span class="title-4">Calendar</span><span class="muted">Month grid used by DatePicker and DateRangePicker.</span></a>
+<a class="card" href="DatePicker.html"><span class="title-4">DatePicker</span><span class="muted">Pick one date.</span></a>
+<a class="card" href="DateRangePicker.html"><span class="title-4">DateRangePicker</span><span class="muted">Pick a start and end date, with quick presets.</span></a>
+<a class="card" href="TimePicker.html"><span class="title-4">TimePicker</span><span class="muted">Pick a time from a list at `step` minutes between `startHour` and `endHour`.</span></a>
+<a class="card" href="FileUpload.html"><span class="title-4">FileUpload</span><span class="muted">Drop zone plus file list with progress and errors.</span></a>
+<a class="card" href="InlineEdit.html"><span class="title-4">InlineEdit</span><span class="muted">Edit a single value in place, on read-heavy pages.</span></a>
+<a class="card" href="Fieldset.html"><span class="title-4">Fieldset</span><span class="muted">A titled section of a form.</span></a>
+</div>
+<h2 id="overlays">Overlays</h2><div class="cards">
+<a class="card" href="Menu.html"><span class="title-4">Menu</span><span class="muted">A list of actions.</span></a>
+<a class="card" href="MenuButton.html"><span class="title-4">MenuButton</span><span class="muted">A button that opens a Menu.</span></a>
+<a class="card" href="Popover.html"><span class="title-4">Popover</span><span class="muted">Non-modal panel anchored to a trigger for small, focused tasks.</span></a>
+<a class="card" href="Tooltip.html"><span class="title-4">Tooltip</span><span class="muted">Short, non-essential help on hover or focus.</span></a>
+<a class="card" href="Dialog.html"><span class="title-4">Dialog</span><span class="muted">Modal window for a focused task that blocks the page.</span></a>
+<a class="card" href="ConfirmDialog.html"><span class="title-4">ConfirmDialog</span><span class="muted">Asks for confirmation before a destructive or irreversible action.</span></a>
+<a class="card" href="Drawer.html"><span class="title-4">Drawer</span><span class="muted">Side panel for details or edits while keeping the list in view.</span></a>
+<a class="card" href="Toast.html"><span class="title-4">Toast</span><span class="muted">Brief confirmation that floats bottom-left and disappears after ~5s.</span></a>
+<a class="card" href="CommandPalette.html"><span class="title-4">CommandPalette</span><span class="muted">Keyboard-first search for navigation and actions, opened with ⌘K.</span></a>
+</div>
+<h2 id="feedback">Feedback</h2><div class="cards">
+<a class="card" href="Alert.html"><span class="title-4">Alert</span><span class="muted">An inline message about the page or a section.</span></a>
+<a class="card" href="Banner.html"><span class="title-4">Banner</span><span class="muted">Page- or app-level message that sits across the top of the content.</span></a>
+<a class="card" href="ProgressBar.html"><span class="title-4">ProgressBar</span><span class="muted">Shows progress of a task or how full something is.</span></a>
+<a class="card" href="Spinner.html"><span class="title-4">Spinner</span><span class="muted">An indeterminate loading indicator that inherits `currentColor`.</span></a>
+<a class="card" href="Skeleton.html"><span class="title-4">Skeleton</span><span class="muted">Placeholder shapes while content loads (under ~2s use nothing; over that, a skeleton matching the final layout).</span></a>
+<a class="card" href="EmptyState.html"><span class="title-4">EmptyState</span><span class="muted">What to show when there is nothing yet, or nothing matches.</span></a>
+</div>
+<h2 id="navigation">Navigation</h2><div class="cards">
+<a class="card" href="Tabs.html"><span class="title-4">Tabs</span><span class="muted">Switches between views of the same object.</span></a>
+<a class="card" href="TopNav.html"><span class="title-4">TopNav</span><span class="muted">Horizontal section navigation under the AppHeader, for apps with up to ~6 top-level sections.</span></a>
+<a class="card" href="Breadcrumbs.html"><span class="title-4">Breadcrumbs</span><span class="muted">Shows where the page sits and links back up.</span></a>
+<a class="card" href="Pagination.html"><span class="title-4">Pagination</span><span class="muted">Moves through pages of a table or list.</span></a>
+<a class="card" href="Stepper.html"><span class="title-4">Stepper</span><span class="muted">Shows progress through a multi-step flow.</span></a>
+<a class="card" href="Accordion.html"><span class="title-4">Accordion</span><span class="muted">Stacked sections that expand to show detail.</span></a>
+<a class="card" href="TreeView.html"><span class="title-4">TreeView</span><span class="muted">Hierarchical list for folders, categories or org structures.</span></a>
+</div>
+<h2 id="app-chrome">App chrome</h2><div class="cards">
+<a class="card" href="AppHeader.html"><span class="title-4">AppHeader</span><span class="muted">The 48px bar across the top of every app: brand and app name left, optional global search centre, tenant switcher and user right.</span></a>
+<a class="card" href="SideNav.html"><span class="title-4">SideNav</span><span class="muted">App-level navigation down the left edge, under the AppHeader.</span></a>
+</div>
+<h2 id="data-display">Data display</h2><div class="cards">
+<a class="card" href="Table.html"><span class="title-4">Table</span><span class="muted">A data table for scanning and comparing records.</span></a>
+<a class="card" href="Badge.html"><span class="title-4">Badge</span><span class="muted">A short, non-interactive label for status, priority or category.</span></a>
+<a class="card" href="Tag.html"><span class="title-4">Tag</span><span class="muted">Interactive keywords, filters or people.</span></a>
+<a class="card" href="TagGroup.html"><span class="title-4">TagGroup</span><span class="muted">Wraps several Tags with consistent spacing.</span></a>
+<a class="card" href="Avatar.html"><span class="title-4">Avatar</span><span class="muted">A person&#x27;s initials (or photo) in a circle on `accent-subtle`.</span></a>
+<a class="card" href="AvatarGroup.html"><span class="title-4">AvatarGroup</span><span class="muted">Overlapping avatars for watchers or participants, with a “+N” for the rest.</span></a>
+<a class="card" href="Kbd.html"><span class="title-4">Kbd</span><span class="muted">Keyboard keys in help text, menus and tooltips.</span></a>
+<a class="card" href="CodeInline.html"><span class="title-4">CodeInline</span><span class="muted">Code or literal values inside a sentence.</span></a>
+<a class="card" href="CodeBlock.html"><span class="title-4">CodeBlock</span><span class="muted">Multi-line code with a copy button.</span></a>
+<a class="card" href="CopyInline.html"><span class="title-4">CopyInline</span><span class="muted">A value with its CopyButton.</span></a>
+<a class="card" href="DescriptionList.html"><span class="title-4">DescriptionList</span><span class="muted">Label–value pairs for record details.</span></a>
+<a class="card" href="Stat.html"><span class="title-4">Stat</span><span class="muted">A KPI tile: label, big number, change.</span></a>
+<a class="card" href="Timeline.html"><span class="title-4">Timeline</span><span class="muted">Activity history or progress through milestones.</span></a>
+<a class="card" href="Comment.html"><span class="title-4">Comment</span><span class="muted">A note or message by a person, with actions.</span></a>
+<a class="card" href="List.html"><span class="title-4">List</span><span class="muted">Rows of simple records (people, files, settings).</span></a>
+</div>
+<h2 id="layout">Layout</h2><div class="cards">
+<a class="card" href="Card.html"><span class="title-4">Card</span><span class="muted">A `surface` container on `bg-page` with `border`, `radius-lg` and `shadow-sm`.</span></a>
+<a class="card" href="Divider.html"><span class="title-4">Divider</span><span class="muted">A 1px rule that separates sections.</span></a>
+</div>
+<h2 id="patterns">Patterns</h2><div class="cards">
+<a class="card" href="PageHeader.html"><span class="title-4">PageHeader</span><span class="muted">Top of every page: breadcrumbs, title, optional status badge, description and metadata, actions on the right, optional tabs underneath.</span></a>
+<a class="card" href="Toolbar.html"><span class="title-4">Toolbar</span><span class="muted">A row of view and bulk controls above content.</span></a>
+<a class="card" href="TableToolbar.html"><span class="title-4">TableToolbar</span><span class="muted">Replaces the table&#x27;s toolbar when rows are selected: count, Clear, and bulk actions.</span></a>
+<a class="card" href="FilterBar.html"><span class="title-4">FilterBar</span><span class="muted">Search plus the most-used filters in one row above a list; active filters show as removable tags with Clear all.</span></a>
+<a class="card" href="FilterPanel.html"><span class="title-4">FilterPanel</span><span class="muted">Side panel of grouped filters for advanced filtering.</span></a>
+<a class="card" href="KanbanColumn.html"><span class="title-4">KanbanColumn</span><span class="muted">A board column of cards for status-based workflows.</span></a>
+<a class="card" href="KanbanCard.html"><span class="title-4">KanbanCard</span><span class="muted">A record card for boards: linked ID, priority badge, title, up to three fields, updated time and assignee.</span></a>
+</div>
+<div class="doc"><h2 id="picking-a-component">Picking a component</h2>
+<p>For people and agents alike: find the need, pick the component, then follow its card's <strong>Do / Don't</strong>. Every component card has <em>When to use</em>, <em>Use something else</em>, <em>Do</em> and <em>Don't</em> sections, and the same guidance is in <code>index.d.ts</code> (hover docs) and in each Figma component's description.</p>
+<div class="table-wrap"><table><thead><tr><th>Need</th><th>Use</th></tr></thead><tbody><tr><td>Trigger an action</td><td>Button (one primary per view) · IconButton (icon-only, with tooltip)</td></tr><tr><td>Several related actions</td><td>MenuButton · SplitButton (one default + variations)</td></tr><tr><td>Go to another page</td><td>Link · SideNav / TopNav (app sections) · Breadcrumbs (back up)</td></tr><tr><td>Switch sections of one page</td><td>Tabs</td></tr><tr><td>Switch views of the same data</td><td>SegmentedControl</td></tr><tr><td>On/off with immediate effect</td><td>Switch (settings) · ToggleButton (view options)</td></tr><tr><td>On/off saved with a form</td><td>Checkbox · CheckboxGroup</td></tr><tr><td>Pick one of 2–6 visible options</td><td>RadioGroup</td></tr><tr><td>Pick one of ~3–15 options</td><td>Select</td></tr><tr><td>Pick one of many (searchable)</td><td>Combobox</td></tr><tr><td>Pick several of many</td><td>MultiSelect (8+) · CheckboxGroup (fewer, visible)</td></tr><tr><td>Enter text</td><td>TextField · TextArea · PasswordField · NumberField (quantities)</td></tr><tr><td>Enter a date or time</td><td>DatePicker · DateRangePicker · TimePicker · Calendar (inline)</td></tr><tr><td>Search or filter a list</td><td>SearchField · FilterBar (2–4 filters) · FilterPanel (5+)</td></tr><tr><td>Show many records to compare</td><td>Table (+ TableToolbar, Pagination)</td></tr><tr><td>Show simple records</td><td>List</td></tr><tr><td>Show a status workflow</td><td>KanbanColumn + KanbanCard</td></tr><tr><td>Show one record's details</td><td>DescriptionList inside a Card or Drawer</td></tr><tr><td>Show status / priority</td><td>Badge</td></tr><tr><td>Show user-added labels or applied filters</td><td>Tag · TagGroup</td></tr><tr><td>Show a key number</td><td>Stat</td></tr><tr><td>Show history of a record</td><td>Timeline (vertical) · Comment (messages)</td></tr><tr><td>Show progress through milestones</td><td>Timeline (horizontal) · Stepper (form flow)</td></tr><tr><td>Show progress of a task</td><td>ProgressBar · Spinner (short) · Skeleton (loading layout)</td></tr><tr><td>Tell people something happened</td><td>Toast (their action) · Alert (a section) · Banner (whole page)</td></tr><tr><td>Confirm a destructive action</td><td>ConfirmDialog</td></tr><tr><td>Focused task over the page</td><td>Dialog · Drawer (keep list in view) · Popover (small, anchored)</td></tr><tr><td>Explain an icon or truncated text</td><td>Tooltip</td></tr><tr><td>Nothing to show</td><td>EmptyState</td></tr><tr><td>Hide optional detail</td><td>Accordion</td></tr><tr><td>Hierarchy</td><td>TreeView</td></tr><tr><td>Page top</td><td>AppHeader (app) · PageHeader (page)</td></tr></tbody></table></div></div>
+<h2 id="look-alikes">Choosing between look-alikes</h2><div class="doc"><ul><li><strong>Badge or Tag:</strong> Badge is read-only status; Tag is interactive (removable, selectable).</li><li><strong>Alert, Banner or Toast:</strong> Alert belongs to a section; Banner spans the page for system state; Toast confirms the user's own action and disappears.</li><li><strong>Dialog, Drawer or Popover:</strong> Dialog blocks the page for a focused task; Drawer shows details beside the list; Popover handles a small task anchored to its trigger.</li><li><strong>Select, Combobox or RadioGroup:</strong> RadioGroup for 2–6 visible options; Select for up to ~15; Combobox when people need to search.</li><li><strong>Tabs, SegmentedControl or TopNav:</strong> Tabs switch content within a page; SegmentedControl switches the view of the same content; TopNav moves between app sections.</li><li><strong>Table, List or Kanban:</strong> Table to compare columns; List for simple records; Kanban for status-based workflows.</li></ul></div>
+<footer class="foot">Tessera is designed and built by <a href="https://priyanka-personal-portfolio.pages.dev/">Priyanka Parab</a>. Open source under the MIT licence.</footer>
+</main>
+</div>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

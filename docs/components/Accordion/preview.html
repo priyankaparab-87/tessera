@@ -1,0 +1,22 @@
+<!-- @dsCard group="Navigation" height=560 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Accordion preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  var more = function (l) { return h(T.IconButton, { icon: 'more-horizontal', label: 'More for ' + l, size: 'sm' }); };
+  root.render(h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap:'16px', padding: '16px', alignItems: 'start' } },
+    h(T.Accordion, { defaultOpen: ['a'], items: [
+      { id: 'a', title: 'Shipping', subtitle: '2 parcels · DHL Express', icon: 'file', meta: h(T.Badge, { tone: 'warning' }, 'Delayed'), actions: more('Shipping'), content: 'Parcel 2 is held at customs in Venlo. Expected release within one business day.' },
+      { id: 'b', title: 'Billing', subtitle: 'Invoice INV-2207', icon: 'id-card', meta: '€1,240.00', actions: more('Billing'), content: 'Paid by card ending 4421.' },
+      { id: 'c', title: 'Returns', subtitle: 'Not available for custom prints', icon: 'refresh', disabled: true, content: '' }] }),
+    h(T.Accordion, { size: 'sm', variant: 'separated', defaultOpen: ['x'], items: [
+      { id: 'x', title: 'Line items', meta: '12', content: h(T.DescriptionList, { size: 'sm', items: [{ term: 'Business cards', description: '500 × €0.18' }, { term: 'Flyers A5', description: '1,000 × €0.09' }] }) },
+      { id: 'y', title: 'Discounts', meta: '2', content: 'Volume 10%, loyalty 5%.' },
+      { id: 'z', title: 'Notes', meta: '0', content: 'No notes yet.' }] })));
+</script>
+</body>
+</html>

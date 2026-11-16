@@ -1,0 +1,14 @@
+<!-- @dsCard group="Patterns" height=190 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>KanbanCard preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.KanbanCard,{id:'CS-137',priority:'High',title:'Waiting on manager approval for credit',fields:[{term:'Order',description:'ORD-48190'},{term:'Customer',description:'Dana Whitfield'}],updated:'2 Sep, 10:12',assignee:'Lina Park'}),h(T.KanbanCard,{id:'CS-139',priority:'Low',title:'Address change before shipping',updated:'4 Sep, 09:30',selected:true})));
+</script>
+</body>
+</html>

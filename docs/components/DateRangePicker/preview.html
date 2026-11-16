@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=400 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DateRangePicker preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px',maxWidth:'440px'}},h(T.DateRangePicker,{label:'Created',open:true,defaultValue:[new Date(2026,8,8),new Date(2026,8,19)]})));
+</script>
+</body>
+</html>

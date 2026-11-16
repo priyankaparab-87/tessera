@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Menu preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.Menu,{width:240,items:[{section:'Case'},{id:'a',label:'Assign to me',icon:'user',shortcut:'A'},{id:'e',label:'Edit details',icon:'edit',shortcut:'E'},{id:'l',label:'Copy link',icon:'link'},{id:'w',label:'Watching',checked:true},{divider:true},{id:'d',label:'Delete case',icon:'trash',tone:'critical'}]})));
+</script>
+</body>
+</html>

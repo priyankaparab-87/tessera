@@ -1,0 +1,61 @@
+<!-- @dsCard group="Foundations" height=620 subtitle="Accent and typeface options, with a live WCAG check" page=true -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Themes preview</title>
+<style>
+  .th-wrap { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+  .th-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+  .th-ctl { display: flex; flex-direction: column; gap: 4px; }
+  .th-ctl > span { font: 600 12px/16px var(--font-sans); color: var(--text-subtle); }
+  .th-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  @media (max-width: 720px) { .th-grid { grid-template-columns: 1fr; } }
+  .th-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .th-check { width: 100%; border-collapse: collapse; font: 400 12px/16px var(--font-sans); color: var(--text); }
+  .th-check td { padding: 6px 0; border-bottom: 1px solid var(--border-subtle); }
+  .th-check td:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .th-sw { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 18px; border-radius: 4px; margin-right: 8px; border: 1px solid var(--border); font: 600 11px/1 var(--font-sans); vertical-align: middle; }
+  .th-spec { display: flex; flex-direction: column; gap: 4px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement, useState = React.useState, useEffect = React.useEffect;
+  function hex(c) { var m = c.match(/\d+(\.\d+)?/g); return m ? m.slice(0, 3).map(Number) : [0, 0, 0]; }
+  function lum(rgb) { var a = rgb.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }); return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]; }
+  function ratio(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+  var probe = document.createElement('span'); probe.style.display = 'none'; document.body.appendChild(probe);
+  function col(name) { probe.style.color = 'var(--' + name + ')'; return getComputedStyle(probe).color; }
+  var PAIRS = [['on-accent', 'accent', 4.5, 'Primary button label'], ['on-accent', 'accent-hover', 4.5, 'Primary button label, hover'],
+    ['text-accent', 'surface', 4.5, 'Links and selected labels'], ['text-accent', 'accent-subtle', 4.5, 'Selected nav item and accent badge'],
+    ['text-accent', 'bg-page', 4.5, 'Links on the page ground'], ['accent', 'surface', 3, 'Checked controls, selected-tab bar'],
+    ['focus-ring', 'surface', 3, 'Focus ring on cards and fields'], ['focus-ring', 'surface-muted', 3, 'Focus ring on muted fills']];
+  function App() {
+    var init = T.getTheme(); var s = useState(init), t = s[0], setT = s[1]; var tick = useState(0), bump = tick[1];
+    function set(k, v) { var n = Object.assign({}, t); n[k] = v; if (k === 'mode') { T.setTheme({ mode: v }, { persist: false }); } else { var o = {}; o[k] = v; T.setTheme(o); } setT(n); setTimeout(function () { bump(function (x) { return x + 1; }); }, 30); }
+    useEffect(function () { var f = function () { setT(T.getTheme()); bump(function (x) { return x + 1; }); }; window.addEventListener('storage', f); return function () { window.removeEventListener('storage', f); }; }, []);
+    var rows = PAIRS.map(function (p) { var r = ratio(hex(col(p[0])), hex(col(p[1]))); return { p: p, r: r, ok: r >= p[2] }; });
+    var allOk = rows.every(function (r) { return r.ok; });
+    return h('div', { className: 'th-wrap' },
+      h('div', { className: 'th-controls' },
+        h('div', { className: 'th-ctl' }, h('span', null, 'Accent'), h(T.SegmentedControl, { label: 'Accent', value: t.accent, onChange: function (v) { set('accent', v); }, items: T.themes.accents.map(function (a) { return { id: a.id, label: a.label }; }) })),
+        h('div', { className: 'th-ctl' }, h('span', null, 'Typeface'), h(T.SegmentedControl, { label: 'Typeface', value: t.font, onChange: function (v) { set('font', v); }, items: T.themes.fonts.map(function (a) { return { id: a.id, label: a.label }; }) })),
+        h('div', { className: 'th-ctl' }, h('span', null, 'Mode'), h(T.SegmentedControl, { label: 'Mode', value: t.mode, onChange: function (v) { set('mode', v); }, items: T.themes.modes.map(function (a) { return { id: a.id, label: a.label }; }) }))),
+      h('div', { className: 'th-grid' },
+        h(T.Card, { title: 'Preview' },
+          h('div', { className: 'th-spec' }, h('div', { className: 'title-2' }, 'Order desk'), h('div', { className: 'ui', style: { color: 'var(--text-muted)' } }, 'Cases, refunds and shipments in one queue.'), h('div', { className: 'num-ui' }, '€12,480.00 · 1,284 orders · 2 Sep 2026, 10:12'), h('div', { className: 'mono' }, 'ord_8F2K19QW · fetch("/v1/orders")')),
+          h(T.Tabs, { size: 'sm', items: [{ id: 'a', label: 'All', count: 128 }, { id: 'b', label: 'Mine', count: 12 }, { id: 'c', label: 'Closed' }], defaultValue: 'a' }),
+          h('div', { className: 'th-row' }, h(T.Button, { variant: 'primary', iconStart: 'plus' }, 'New case'), h(T.Button, { variant: 'secondary' }, 'Export'), h(T.Badge, { tone: 'accent' }, 'Assigned'), h(T.Link, { href: '#' }, 'View history')),
+          h('div', { className: 'th-row' }, h(T.Checkbox, { defaultChecked: true }, 'Notify customer'), h(T.Switch, { defaultChecked: true }, 'Auto-assign')),
+          h(T.TextField, { label: 'Search', placeholder: 'Order ID or email', iconStart: 'search' })),
+        h(T.Card, { title: allOk ? 'WCAG AA: all pass' : 'WCAG AA: check failing pairs' },
+          h('table', { className: 'th-check' }, h('tbody', null, rows.map(function (r) {
+            return h('tr', { key: r.p[0] + r.p[1] },
+              h('td', null, h('span', { className: 'th-sw', 'aria-hidden': true, style: { background: 'var(--' + r.p[1] + ')', color: 'var(--' + r.p[0] + ')' } }, 'Aa'), r.p[3], h('div', { style: { color: 'var(--text-muted)' } }, r.p[0] + ' on ' + r.p[1])),
+              h('td', null, h(T.Badge, { tone: r.ok ? 'success' : 'critical' }, r.r.toFixed(2) + ':1 ' + (r.ok ? '≥ ' : '< ') + r.p[2])));
+          }))))));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Data display" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Table preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{padding:'16px'}}, h(T.Table,{selectable:true,rowActions:true,defaultSelected:['CS-137'],defaultSort:{key:'updated',dir:'desc'},columns:[
+    {key:'id',label:'Case',sortable:true,render:function(r){return h(T.Link,{href:'#'},r.id);}},
+    {key:'title',label:'Title'},
+    {key:'priority',label:'Priority',sortable:true,sortValue:function(r){return {Low:0,Medium:1,High:2}[r.priority];},render:function(r){return h(T.Badge,{tone:{Low:'neutral',Medium:'warning',High:'critical'}[r.priority]},r.priority);}},
+    {key:'assignee',label:'Assignee',render:function(r){return h('span',{style:{display:'inline-flex',gap:'8px',alignItems:'center'}},h(T.Avatar,{name:r.assignee,size:24}),r.assignee);}},
+    {key:'updated',label:'Updated',align:'right',sortable:true,render:function(r){var d=r.updated.split('-');return Number(d[2])+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(d[1])-1]+' '+d[0];}}],
+    rows:[{id:'CS-136',title:'Refund requested for a damaged item',priority:'Low',assignee:'Ana Ortiz',updated:'2026-09-01'},
+          {id:'CS-137',title:'Waiting on manager approval for credit',priority:'High',assignee:'Lina Park',updated:'2026-09-02'},
+          {id:'CS-138',title:'Replacement shipped and confirmed',priority:'Medium',assignee:'Tom Becker',updated:'2026-09-03'}],
+    footer:h(T.Pagination,{defaultPage:1,pageCount:13,total:312,pageSize:25})})));
+</script>
+</body>
+</html>

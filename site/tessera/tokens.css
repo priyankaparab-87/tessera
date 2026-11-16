@@ -1,0 +1,300 @@
+/* Tessera — generated from tokens.json by scripts/build.py. Do not edit by hand. */
+:root, [data-theme="light"] {
+  --gray-0: #ffffff; /* Surfaces in light: cards, inputs, header, menus. */
+  --gray-25: #fafafa; /* Page ground in light. */
+  --gray-50: #f4f4f5; /* Muted fills in light: table header, board columns, read-only fields. Text in dark. */
+  --gray-100: #e9e9ec; /* Subtle dividers in light. Inverse surface in dark. */
+  --gray-200: #dcdce0; /* Default borders in light. Subtle text in dark. */
+  --gray-300: #b9b9c0; /* Muted text in dark. */
+  --gray-400: #9b9ba4; /* Placeholder-strength marks; skeleton shimmer in dark. */
+  --gray-500: #7c7c86; /* Control borders in both themes; disabled text. */
+  --gray-600: #5f5f69; /* Muted text in light. */
+  --gray-700: #45454d; /* Subtle text in light. */
+  --gray-750: #323238; /* Default borders in dark. */
+  --gray-800: #27272b; /* Muted fills and subtle dividers in dark. */
+  --gray-850: #1f1f23; /* Raised surfaces in dark: menus, popovers, dialogs. */
+  --gray-900: #18181b; /* Text in light. Surfaces in dark. Inverse surface in light. */
+  --gray-950: #0f0f11; /* Page ground in dark; text on light fills in dark. */
+  --indigo-50: #eef0ff; /* Accent-subtle fills in light: selected rows and nav items. */
+  --indigo-100: #e0e3ff; /* Accent-subtle hover in light. */
+  --indigo-200: #c4c8fd; /* Accent hover in dark. */
+  --indigo-300: #a6acfb; /* Accent text and focus ring in dark. */
+  --indigo-400: #838af7; /* Accent fill in dark. */
+  --indigo-500: #6366f1; /* Charts and illustration accents only. */
+  --indigo-600: #4f46e5; /* Accent fill, links and focus ring in light. */
+  --indigo-700: #4036c4; /* Accent hover in light. */
+  --indigo-900: #232052; /* Accent-subtle fills in dark. */
+  --sky-50: #e8f4fd; /* Info-subtle fills in light. */
+  --sky-300: #7cc4f5; /* Info in dark. */
+  --sky-600: #0868b3; /* Info in light. */
+  --sky-900: #0c2a40; /* Info-subtle fills in dark. */
+  --green-50: #e7f6ed; /* Success-subtle fills in light. */
+  --green-300: #6fd19c; /* Success in dark. */
+  --green-600: #147844; /* Success in light. */
+  --green-900: #0e2e1d; /* Success-subtle fills in dark. */
+  --amber-50: #fdf4e1; /* Warning-subtle fills in light. */
+  --amber-300: #f5c060; /* Warning in dark. */
+  --amber-600: #985a00; /* Warning in light. */
+  --amber-900: #392708; /* Warning-subtle fills in dark. */
+  --red-50: #fdecec; /* Critical-subtle fills in light. */
+  --red-200: #f9c0bd; /* Critical hover in dark. */
+  --red-300: #f59a96; /* Critical in dark. */
+  --red-600: #c42b2b; /* Critical in light: destructive buttons, error text. */
+  --red-700: #a32020; /* Critical hover in light. */
+  --red-900: #3f1515; /* Critical-subtle fills in dark. */
+  --violet-50: #f4eefe; /* New-subtle fills in light. */
+  --violet-300: #c9a6f7; /* New in dark. */
+  --violet-600: #7a35d4; /* New and discovery badges in light. */
+  --violet-900: #2c1748; /* New-subtle fills in dark. */
+  --bg-page: var(--gray-25); /* Page ground behind cards and panels. */
+  --surface: var(--gray-0); /* Cards, app header, inputs, table body. */
+  --surface-raised: var(--gray-0); /* Menus, popovers, dialogs, drawers, toasts: anything that floats above surface. */
+  --surface-muted: var(--gray-50); /* Board columns, table header row, read-only and disabled fields, skeletons. */
+  --surface-hover: rgba(24,24,27,0.05); /* Hover tint on transparent controls, menu items and table rows. */
+  --surface-active: rgba(24,24,27,0.09); /* Pressed tint on transparent controls. */
+  --surface-inverse: var(--gray-900); /* Tooltips and toasts. */
+  --scrim: rgba(15,15,17,0.48); /* Overlay behind dialogs, drawers and the command palette. */
+  --border: var(--gray-200); /* Card, panel, table and menu borders (decorative, not a control edge). */
+  --border-subtle: var(--gray-100); /* Row dividers and section rules inside a card. */
+  --border-control: var(--gray-500); /* Edges of inputs, selects, checkboxes, radios, switches. 3:1 on surface and bg-page in both themes. */
+  --focus-ring: var(--indigo-600); /* 2px focus ring outside every interactive element, 2px offset. 3:1+ on every surface. */
+  --text: var(--gray-900); /* Body and title text on surface, surface-raised, surface-muted and bg-page. */
+  --text-subtle: var(--gray-700); /* Secondary text and labels on surface, surface-muted and bg-page. */
+  --text-muted: var(--gray-600); /* Metadata, timestamps, placeholders, helper text on surface, surface-muted and bg-page. */
+  --text-disabled: var(--gray-500); /* Disabled labels only (exempt from contrast minimums). */
+  --text-accent: var(--indigo-600); /* Links and selected labels on surface, bg-page and accent-subtle. */
+  --text-inverse: var(--gray-50); /* Text on surface-inverse (tooltips, toasts). */
+  --accent: var(--indigo-600); /* Primary button fill, checked controls, selected-tab bar, slider and progress fill. */
+  --accent-hover: var(--indigo-700); /* Hover on accent fills. */
+  --on-accent: var(--gray-0); /* Text and icons on accent and accent-hover. */
+  --accent-subtle: var(--indigo-50); /* Selected rows and nav items, accent badges, today in calendars. */
+  --info: var(--sky-600); /* Info text and icons on surface and info-subtle. */
+  --info-subtle: var(--sky-50); /* Info alert, banner and badge ground. */
+  --success: var(--green-600); /* Success text and icons on surface and success-subtle. Always paired with a word or icon. */
+  --success-subtle: var(--green-50); /* Success alert, banner and badge ground. */
+  --warning: var(--amber-600); /* Warning text and icons on surface and warning-subtle. Always paired with a word or icon. */
+  --warning-subtle: var(--amber-50); /* Warning alert, banner and badge ground. */
+  --critical: var(--red-600); /* Error text, destructive button fill, critical icons on surface and critical-subtle. */
+  --critical-hover: var(--red-700); /* Hover and pressed on critical fills. */
+  --critical-subtle: var(--red-50); /* Critical alert, banner and badge ground. */
+  --on-critical: var(--gray-0); /* Text on a critical fill. */
+  --new: var(--violet-600); /* New, beta and discovery labels on surface and new-subtle. */
+  --new-subtle: var(--violet-50); /* New badge ground. */
+  --info-on-inverse: var(--sky-300); /* Info and neutral icons on surface-inverse (toasts). */
+  --success-on-inverse: var(--green-300); /* Success icons on surface-inverse (toasts). */
+  --warning-on-inverse: var(--amber-300); /* Warning icons on surface-inverse (toasts). */
+  --critical-on-inverse: var(--red-300); /* Critical icons on surface-inverse (toasts). */
+  --shadow-sm: 0 1px 2px rgba(15,15,17,0.08); /* App header, cards resting on bg-page. */
+  --shadow-md: 0 2px 4px rgba(15,15,17,0.06), 0 6px 16px rgba(15,15,17,0.08); /* Menus, popovers, select lists, tooltips. */
+  --shadow-lg: 0 8px 24px rgba(15,15,17,0.12), 0 24px 56px rgba(15,15,17,0.12); /* Dialogs and drawers. */
+}
+[data-theme="dark"] {
+  --bg-page: var(--gray-950);
+  --surface: var(--gray-900);
+  --surface-raised: var(--gray-850);
+  --surface-muted: var(--gray-800);
+  --surface-hover: rgba(255,255,255,0.06);
+  --surface-active: rgba(255,255,255,0.11);
+  --surface-inverse: var(--gray-100);
+  --scrim: rgba(0,0,0,0.64);
+  --border: var(--gray-750);
+  --border-subtle: var(--gray-800);
+  --border-control: var(--gray-500);
+  --focus-ring: var(--indigo-300);
+  --text: var(--gray-50);
+  --text-subtle: var(--gray-200);
+  --text-muted: var(--gray-300);
+  --text-disabled: var(--gray-500);
+  --text-accent: var(--indigo-300);
+  --text-inverse: var(--gray-900);
+  --accent: var(--indigo-400);
+  --accent-hover: var(--indigo-200);
+  --on-accent: var(--gray-950);
+  --accent-subtle: var(--indigo-900);
+  --info: var(--sky-300);
+  --info-subtle: var(--sky-900);
+  --success: var(--green-300);
+  --success-subtle: var(--green-900);
+  --warning: var(--amber-300);
+  --warning-subtle: var(--amber-900);
+  --critical: var(--red-300);
+  --critical-hover: var(--red-200);
+  --critical-subtle: var(--red-900);
+  --on-critical: var(--gray-950);
+  --new: var(--violet-300);
+  --new-subtle: var(--violet-900);
+  --info-on-inverse: var(--sky-600);
+  --success-on-inverse: var(--green-600);
+  --warning-on-inverse: var(--amber-600);
+  --critical-on-inverse: var(--red-600);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
+  --shadow-md: 0 2px 4px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5), 0 24px 56px rgba(0,0,0,0.6);
+}
+:root {
+  --space-0: 0px; /* Flush edges. */
+  --space-2: 2px; /* Gap between nav items; icon-to-text nudge inside dense controls. */
+  --space-4: 4px; /* Gap between a label and its value; badge padding block. */
+  --space-6: 6px; /* Icon-to-label gap in buttons and tabs; block padding of list rows and table headers. */
+  --space-8: 8px; /* Small button padding, table cell block padding, gap between buttons, between tight inline items. */
+  --space-12: 12px; /* Default button and field padding, table cell inline padding, gap between form fields, compact card padding. */
+  --space-16: 16px; /* Card, dialog and drawer padding; gap between cards and page sections. */
+  --space-24: 24px; /* Page gutter; gap between major page regions. */
+  --space-32: 32px; /* Empty-state padding; top padding on sparse pages. */
+  --space-48: 48px; /* Rare: spacing on landing and onboarding pages. */
+  --space-64: 64px; /* Rare: hero spacing on marketing-style pages. Never inside components. */
+  --radius-xs: 2px; /* Checkboxes, focus ring corners on tight items. */
+  --radius-sm: 4px; /* Inputs, selects, menus, tooltips, badges. */
+  --radius-md: 6px; /* Buttons, icon buttons, board columns. */
+  --radius-lg: 8px; /* Cards, dialogs, tables, popovers' outer frame. */
+  --radius-pill: 999px; /* Switch tracks, avatars, count pills on tabs. */
+  --control-xs: 24px; /* Inline controls inside table rows, tags and toolbars of dense panels. */
+  --control-sm: 28px; /* Toolbars, filter bars, table toolbars, side panels. */
+  --control-md: 32px; /* Default height for buttons, fields, selects, nav items and menu items. */
+  --control-lg: 40px; /* Tabs; the primary action on sparse pages such as sign-in or onboarding. */
+  --header-height: 48px; /* AppHeader height. */
+  --sidenav-rail: 56px; /* Collapsed SideNav width. */
+  --sidenav-open: 240px; /* Expanded SideNav width. */
+  --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
+  --font-numeric: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-plex: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-inter: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-system: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-system-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-title-1: 600 24px/32px var(--font-sans); /* Page title on landing and overview pages. One per page. */
+  --text-title-2: 600 20px/28px var(--font-sans); /* Page title (PageHeader). */
+  --text-title-3: 600 16px/24px var(--font-sans); /* Dialog and drawer titles. */
+  --text-title-4: 600 14px/20px var(--font-sans); /* Card titles, section headers, fieldset legends, board column headers. */
+  --text-body: 400 14px/22px var(--font-sans); /* Multi-line prose: descriptions, dialog body, comments, docs. Same size as ui with a looser line height. */
+  --text-ui: 400 14px/20px var(--font-sans); /* The workhorse: table cells, field values, card content, menus. */
+  --text-ui-strong: 600 14px/20px var(--font-sans); /* Field labels, button labels, tab labels, emphasised values. */
+  --text-small: 400 12px/16px var(--font-sans); /* Helper text and timestamps. Never for body copy. */
+  --text-small-strong: 500 12px/16px var(--font-sans); /* Badge, tag and count labels; column headers in dense tables. */
+  --text-num-display: 600 24px/32px var(--font-numeric); /* Stat values and other headline figures. */
+  --text-num-ui: 400 14px/20px var(--font-numeric); /* Amounts, counts, dates and times in table cells, fields and lists. Tabular figures. */
+  --text-num-ui-strong: 600 14px/20px var(--font-numeric); /* Totals and emphasised figures. */
+  --text-num-small: 400 12px/16px var(--font-numeric); /* Deltas, timestamps and progress values. */
+  --text-num-small-strong: 500 12px/16px var(--font-numeric); /* Counts on tabs, nav items and badges. */
+  --text-mono: 400 13px/20px var(--font-mono); /* IDs, keys and code, in Geist Mono by default. Pair with CopyButton when the value is meant to be copied. */
+  --text-Inter: 400 13px/20px var(--font-inter);
+}
+.title-1 {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.title-2 {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.title-3 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.title-4 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.ui {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.ui-strong {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.small {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.small-strong {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.num-display {
+  font-family: var(--font-numeric);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.num-ui {
+  font-family: var(--font-numeric);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.num-ui-strong {
+  font-family: var(--font-numeric);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.num-small {
+  font-family: var(--font-numeric);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.num-small-strong {
+  font-family: var(--font-numeric);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.Inter {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}

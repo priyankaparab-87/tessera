@@ -1,0 +1,14 @@
+<!-- @dsCard group="Feedback" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>EmptyState preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.EmptyState,{icon:'board',title:'No cases waiting for approval',action:h(T.Button,{variant:'primary',iconStart:'plus'},'Create case')},'Cases appear here when a credit or refund needs a manager’s sign-off.'),h(T.EmptyState,{size:'sm',icon:'search',title:'No results',secondaryAction:h(T.Button,{size:'sm'},'Clear filters')},'Try a different search or remove a filter.')));
+</script>
+</body>
+</html>

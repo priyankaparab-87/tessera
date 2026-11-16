@@ -1,0 +1,14 @@
+<!-- @dsCard group="Feedback" height=220 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Banner preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'12px',padding:'16px'}},h(T.Banner,{tone:'info',title:'Scheduled maintenance',action:h(T.Button,{size:'sm'},'Details')},'Saturday 02:00–03:00 UTC. Exports will pause.'),h(T.Banner,{tone:'warning',dismissible:true},'Your trial ends in 3 days.'),h(T.Banner,{tone:'critical',title:'Payments are failing.',action:h(T.Button,{size:'sm'},'View status')},'New orders can’t be charged.')));
+</script>
+</body>
+</html>

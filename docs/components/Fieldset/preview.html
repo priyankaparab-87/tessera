@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Fieldset preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px',maxWidth:'640px'}},h(T.Fieldset,{legend:'Shipping address',description:'Used for replacements and returns.',columns:2},h(T.TextField,{label:'Street'}),h(T.TextField,{label:'City'}),h(T.TextField,{label:'Postcode'}),h(T.Select,{label:'Country',defaultValue:'Netherlands',options:['Netherlands','Germany','India']}))));
+</script>
+</body>
+</html>

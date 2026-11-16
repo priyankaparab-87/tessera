@@ -1,0 +1,14 @@
+<!-- @dsCard group="Data display" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DescriptionList preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.DescriptionList,{items:[{term:'Customer ID',description:h(T.CopyInline,{value:'5508214470'})},{term:'Email',description:'dana@example.com'},{term:'Login',description:'Single sign-on'},{term:'Customer since',description:'Mar 2021'}]}),h(T.DescriptionList,{layout:'stacked',columns:2,items:[{term:'Order',description:'ORD-48213'},{term:'Total',description:'€ 412.50'},{term:'Placed',description:'28 Aug 2026'},{term:'Channel',description:'Web'}]})));
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=110 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tooltip preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'200px',padding:'56px 120px 16px'}},h(T.Tooltip,{open:true,content:'Copy link',shortcut:'⌘L'},h(T.IconButton,{icon:'link',label:'Copy link',variant:'secondary'})),h(T.Tooltip,{open:true,content:'Created 2 Sep 2026, 10:12 by Ana Ortiz'},h('span',{className:'ui',style:{textDecoration:'underline dotted'}},'2 days ago'))));
+</script>
+</body>
+</html>

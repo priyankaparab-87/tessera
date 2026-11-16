@@ -1,0 +1,16 @@
+<!-- @dsCard group="Forms" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Select preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px'}},
+    h(T.Select,{label:'Priority',placeholder:'Filter by priority',options:['Low','Medium','High']}),
+    h(T.Select,{label:'Assignee',defaultValue:'Lina Park',options:['Ana Ortiz','Lina Park','Tom Becker']})));
+</script>
+</body>
+</html>

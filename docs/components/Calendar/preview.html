@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=330 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Calendar preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.Calendar,{value:new Date(2026,8,18)}),h(T.Calendar,{rangeStart:new Date(2026,8,8),rangeEnd:new Date(2026,8,19)})));
+</script>
+</body>
+</html>

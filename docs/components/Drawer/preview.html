@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=460 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Drawer preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{height:'440px'}},h(T.Drawer,{inline:true,width:400,title:'CS-137',subtitle:'Waiting on manager approval for credit',onClose:function(){},footer:[h(T.Button,{key:1},'Close'),h(T.Button,{key:2,variant:'primary'},'Approve credit')]},h(T.DescriptionList,{items:[{term:'Customer',description:'Dana Whitfield'},{term:'Order',description:'ORD-48213'},{term:'Assignee',description:'Lina Park'},{term:'Priority',description:h(T.Badge,{tone:'critical'},'High')}]}),h(T.Alert,{tone:'warning',title:'Credit over 20%'},'Needs a manager’s approval.'))));
+</script>
+</body>
+</html>

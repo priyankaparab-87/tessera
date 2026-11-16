@@ -1,0 +1,14 @@
+<!-- @dsCard group="Data display" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tag preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.Tag,null,'Refund'),h(T.Tag,{onRemove:function(){}},'Damaged'),h(T.Tag,{icon:'star',tone:'accent'},'VIP'),h(T.Tag,{avatar:'Lina Park',onRemove:function(){}},'Lina Park'),h(T.Tag,{selected:true},'Selected'),h(T.Tag,{size:'sm'},'Small')));
+</script>
+</body>
+</html>

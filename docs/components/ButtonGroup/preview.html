@@ -1,0 +1,14 @@
+<!-- @dsCard group="Actions" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ButtonGroup preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px'}},h(T.ButtonGroup,null,h(T.Button,null,'Cancel'),h(T.Button,{variant:'primary'},'Save changes')),h(T.ButtonGroup,{attached:true},h(T.Button,{iconStart:'list'},'List'),h(T.Button,{iconStart:'board'},'Board'),h(T.Button,{iconStart:'calendar'},'Calendar'))));
+</script>
+</body>
+</html>

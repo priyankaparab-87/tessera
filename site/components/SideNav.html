@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SideNav · Tessera</title>
+<meta name="description" content="App-level navigation down the left edge, under the AppHeader.">
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../tessera/tokens.css">
+<link rel="stylesheet" href="../tessera/bundle.css">
+<link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+  <a class="brand" href="../index.html"><svg class="mark" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="2"/><rect x="11" y="1" width="8" height="8" rx="2"/><rect x="1" y="11" width="8" height="8" rx="2"/><rect x="11" y="11" width="8" height="8" rx="2"/></svg><span>Tessera</span></a>
+  <div class="hdr-tools">
+    <label class="ctl"><span class="vh">Mode</span><select data-theme-ctl="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+    <label class="ctl"><span class="vh">Accent</span><select data-theme-ctl="accent"><option value="indigo">Indigo</option><option value="cobalt">Cobalt</option><option value="teal">Teal</option><option value="graphite">Graphite</option></select></label>
+    <label class="ctl"><span class="vh">Typeface</span><select data-theme-ctl="font"><option value="geist">Geist</option><option value="plex">IBM Plex</option><option value="inter">Inter</option><option value="system">System UI</option></select></label>
+    
+  </div>
+</header>
+<div class="frame">
+<div class="side-wrap" id="side"><nav class="side" aria-label="Docs"><div class="side-group"><a href="../index.html">Overview</a><a href="../get-started.html">Get started</a><a href="../foundations.html">Foundations</a><a href="../tokens.html">Tokens</a><a href="../components/index.html">Components</a></div><div class="side-group"><p class="side-label">Foundations</p><a href="../components/Themes.html">Themes</a><a href="../components/Icon.html">Icon</a></div><div class="side-group"><p class="side-label">Actions</p><a href="../components/Button.html">Button</a><a href="../components/IconButton.html">IconButton</a><a href="../components/ButtonGroup.html">ButtonGroup</a><a href="../components/SplitButton.html">SplitButton</a><a href="../components/ToggleButton.html">ToggleButton</a><a href="../components/SegmentedControl.html">SegmentedControl</a><a href="../components/Link.html">Link</a><a href="../components/CopyButton.html">CopyButton</a></div><div class="side-group"><p class="side-label">Forms</p><a href="../components/TextField.html">TextField</a><a href="../components/TextArea.html">TextArea</a><a href="../components/NumberField.html">NumberField</a><a href="../components/PasswordField.html">PasswordField</a><a href="../components/SearchField.html">SearchField</a><a href="../components/Select.html">Select</a><a href="../components/Combobox.html">Combobox</a><a href="../components/MultiSelect.html">MultiSelect</a><a href="../components/Checkbox.html">Checkbox</a><a href="../components/CheckboxGroup.html">CheckboxGroup</a><a href="../components/Radio.html">Radio</a><a href="../components/RadioGroup.html">RadioGroup</a><a href="../components/Switch.html">Switch</a><a href="../components/Slider.html">Slider</a><a href="../components/Calendar.html">Calendar</a><a href="../components/DatePicker.html">DatePicker</a><a href="../components/DateRangePicker.html">DateRangePicker</a><a href="../components/TimePicker.html">TimePicker</a><a href="../components/FileUpload.html">FileUpload</a><a href="../components/InlineEdit.html">InlineEdit</a><a href="../components/Fieldset.html">Fieldset</a></div><div class="side-group"><p class="side-label">Overlays</p><a href="../components/Menu.html">Menu</a><a href="../components/MenuButton.html">MenuButton</a><a href="../components/Popover.html">Popover</a><a href="../components/Tooltip.html">Tooltip</a><a href="../components/Dialog.html">Dialog</a><a href="../components/ConfirmDialog.html">ConfirmDialog</a><a href="../components/Drawer.html">Drawer</a><a href="../components/Toast.html">Toast</a><a href="../components/CommandPalette.html">CommandPalette</a></div><div class="side-group"><p class="side-label">Feedback</p><a href="../components/Alert.html">Alert</a><a href="../components/Banner.html">Banner</a><a href="../components/ProgressBar.html">ProgressBar</a><a href="../components/Spinner.html">Spinner</a><a href="../components/Skeleton.html">Skeleton</a><a href="../components/EmptyState.html">EmptyState</a></div><div class="side-group"><p class="side-label">Navigation</p><a href="../components/Tabs.html">Tabs</a><a href="../components/TopNav.html">TopNav</a><a href="../components/Breadcrumbs.html">Breadcrumbs</a><a href="../components/Pagination.html">Pagination</a><a href="../components/Stepper.html">Stepper</a><a href="../components/Accordion.html">Accordion</a><a href="../components/TreeView.html">TreeView</a></div><div class="side-group"><p class="side-label">App chrome</p><a href="../components/AppHeader.html">AppHeader</a><a href="../components/SideNav.html" aria-current="page">SideNav</a></div><div class="side-group"><p class="side-label">Data display</p><a href="../components/Table.html">Table</a><a href="../components/Badge.html">Badge</a><a href="../components/Tag.html">Tag</a><a href="../components/TagGroup.html">TagGroup</a><a href="../components/Avatar.html">Avatar</a><a href="../components/AvatarGroup.html">AvatarGroup</a><a href="../components/Kbd.html">Kbd</a><a href="../components/CodeInline.html">CodeInline</a><a href="../components/CodeBlock.html">CodeBlock</a><a href="../components/CopyInline.html">CopyInline</a><a href="../components/DescriptionList.html">DescriptionList</a><a href="../components/Stat.html">Stat</a><a href="../components/Timeline.html">Timeline</a><a href="../components/Comment.html">Comment</a><a href="../components/List.html">List</a></div><div class="side-group"><p class="side-label">Layout</p><a href="../components/Card.html">Card</a><a href="../components/Divider.html">Divider</a></div><div class="side-group"><p class="side-label">Patterns</p><a href="../components/PageHeader.html">PageHeader</a><a href="../components/Toolbar.html">Toolbar</a><a href="../components/TableToolbar.html">TableToolbar</a><a href="../components/FilterBar.html">FilterBar</a><a href="../components/FilterPanel.html">FilterPanel</a><a href="../components/KanbanColumn.html">KanbanColumn</a><a href="../components/KanbanCard.html">KanbanCard</a></div></nav></div>
+<main id="main" class="main">
+<p class="eyebrow">App chrome</p>
+<h1 class="title-1">SideNav</h1>
+<div class="preview"><iframe src="../previews/SideNav.html" title="SideNav live preview" style="height:260px"></iframe><a class="preview-open" href="../previews/SideNav.html">Open preview on its own</a></div>
+<div class="doc"><p>App-level navigation down the left edge, under the AppHeader. 240px open, 56px collapsed to an icon rail.</p>
+<ul><li>Every item has an icon and a label; collapsed items show the label as a tooltip.</li><li>The current section uses <code>accent-subtle</code> with <code>text-accent</code>. Keep it to the app's top-level sections.</li></ul>
+<h2 id="when-to-use">When to use</h2>
+<p>Main app navigation with icons; collapses to a rail.</p>
+<h2 id="use-something-else">Use something else</h2>
+<p>Few sections → TopNav. In-page → Tabs.</p>
+<h2 id="do">Do</h2>
+<ul><li>Give every item an icon and a short label.</li><li>Use <code>count</code> only for items that need attention.</li></ul>
+<h2 id="don-t">Don't</h2>
+<ul><li>Don't put actions (Create…) in the nav.</li></ul></div>
+<h2 id="props">Props</h2><div class="table-wrap"><table class="props"><thead><tr><th>Prop</th><th>Type</th></tr></thead><tbody>
+<tr><td><code>items</code> <span class="req">required</span></td><td><code>Array&lt;{ id: string; label: string; icon: string; href?: string; count?: number }&gt;</code></td></tr>
+<tr><td><code>value</code></td><td><code>string</code></td></tr>
+<tr><td><code>defaultValue</code></td><td><code>string</code></td></tr>
+<tr><td><code>onChange</code></td><td><code>(id: string) =&gt; void; collapsed?: boolean; label?: string; className?: string</code></td></tr>
+</tbody></table></div>
+<h2 id="use">Use</h2><pre class="code"><code>const { SideNav } = window.Tessera;
+const el = React.createElement(SideNav, { /* props */ });</code></pre>
+<div class="pager"><a class="pn prev" href="AppHeader.html"><span class="muted">Previous</span>AppHeader</a><a class="pn next" href="Table.html"><span class="muted">Next</span>Table</a></div>
+<footer class="foot">Tessera is designed and built by <a href="https://priyanka-personal-portfolio.pages.dev/">Priyanka Parab</a>. Open source under the MIT licence.</footer>
+</main>
+</div>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

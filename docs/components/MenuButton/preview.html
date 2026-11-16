@@ -1,0 +1,14 @@
+<!-- @dsCard group="Overlays" height=240 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>MenuButton preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.MenuButton,{open:true,items:[{id:'csv',label:'Export CSV',icon:'download'},{id:'xlsx',label:'Export Excel',icon:'download'},{divider:true},{id:'sched',label:'Schedule export…',icon:'clock'}]},'Export'),h('div',{style:{marginLeft:'200px'}},h(T.MenuButton,{icon:'more-vertical',label:'Case actions',items:[]}))));
+</script>
+</body>
+</html>

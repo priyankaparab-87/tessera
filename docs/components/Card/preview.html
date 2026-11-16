@@ -1,0 +1,21 @@
+<!-- @dsCard group="Layout" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Card preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'16px',padding:'16px',alignItems:'start'}},
+    h(T.Card,{title:'Associated company',actions:h(T.IconButton,{icon:'more-vertical',label:'More actions'})},
+      h('div',{className:'ui',style:{display:'flex',alignItems:'center',gap:'8px'}},'Company ID: ',h('span',{className:'mono'},'org_7Q2M9X4KD1'),h(T.CopyButton,{value:'org_7Q2M9X4KD1'})),
+      h('div',{className:'ui'},'Primary contact: ',h(T.Link,{href:'#'},'Harbor Supply Co.'))),
+    h(T.Card,{padding:'compact',flat:true},
+      h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}},h(T.Link,{href:'#'},'CS-136'),h(T.Badge,{tone:'critical'},'High')),
+      h('div',{className:'ui'},'Waiting on manager approval for credit'),
+      h('div',{className:'small',style:{color:'var(--text-muted)'}},'2 Sep 2026, 10:12'))));
+</script>
+</body>
+</html>

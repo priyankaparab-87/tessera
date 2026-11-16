@@ -1,0 +1,14 @@
+<!-- @dsCard group="Actions" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SegmentedControl preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px'}},h(T.SegmentedControl,{label:'View',defaultValue:'board',items:[{id:'list',label:'List',icon:'list'},{id:'board',label:'Board',icon:'board'},{id:'cal',label:'Calendar',icon:'calendar'}]}),h(T.SegmentedControl,{label:'Range',size:'sm',defaultValue:'30',items:[{id:'7',label:'7d'},{id:'30',label:'30d'},{id:'90',label:'90d'},{id:'all',label:'All'}]})));
+</script>
+</body>
+</html>

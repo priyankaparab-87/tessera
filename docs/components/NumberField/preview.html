@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=110 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>NumberField preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.NumberField,{label:'Quantity',defaultValue:250,min:0,step:50}),h(T.NumberField,{label:'Credit',defaultValue:15,suffix:'%',min:0,max:100}),h(T.NumberField,{label:'Unit price',defaultValue:4.5,prefix:'€',step:0.5})));
+</script>
+</body>
+</html>

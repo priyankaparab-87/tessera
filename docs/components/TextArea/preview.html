@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=170 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TextArea preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.TextArea,{label:'Internal note',placeholder:'Add context for the next agent',maxLength:280,description:'Only your team can see this.'}),h(T.TextArea,{label:'Reason for credit',defaultValue:'Item arrived damaged',error:'Add at least 20 characters.',required:true})));
+</script>
+</body>
+</html>

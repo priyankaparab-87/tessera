@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TreeView preview · Tessera</title>
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="stylesheet" href="../tessera/tokens.css">
+<link rel="stylesheet" href="../tessera/bundle.css">
+<style>html,body{margin:0;background:var(--surface);color:var(--text);font:var(--text-ui);font-family:var(--font-sans)}</style>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../tessera/bundle.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px',maxWidth:'320px'}},h(T.TreeView,{defaultExpanded:['cat','print'],defaultValue:'cards',items:[{id:'cat',label:'Catalogue',children:[{id:'print',label:'Print',children:[{id:'cards',label:'Business cards',icon:'file',count:24},{id:'fly',label:'Flyers',icon:'file',count:12}]},{id:'apparel',label:'Apparel',children:[{id:'t',label:'T-shirts'}]}]},{id:'arch',label:'Archive'}]})));
+</script>
+</body>
+</html>

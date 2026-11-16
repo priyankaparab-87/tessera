@@ -1,0 +1,14 @@
+<!-- @dsCard group="Patterns" height=520 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>KanbanColumn preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',padding:'16px',alignItems:'flex-start',overflowX:'auto'}},h(T.KanbanColumn,{title:'Open',tone:'info'},h(T.KanbanCard,{id:'CS-136',priority:'Low',title:'Refund requested for a damaged item',fields:[{term:'Order',description:'ORD-48213'}],updated:'1 Sep, 08:56',assignee:'Ana Ortiz'}),h(T.KanbanCard,{id:'CS-137',priority:'High',title:'Waiting on manager approval for credit',fields:[{term:'Order',description:'ORD-48190'}],updated:'2 Sep, 10:12',assignee:'Lina Park',selected:true})),h(T.KanbanColumn,{title:'In progress',tone:'accent'},h(T.KanbanCard,{id:'CS-138',priority:'Medium',title:'Replacement shipped and confirmed',updated:'3 Sep, 16:45',assignee:'Tom Becker'})),h(T.KanbanColumn,{title:'Waiting for approval',tone:'warning'})));
+</script>
+</body>
+</html>

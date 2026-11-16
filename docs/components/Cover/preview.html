@@ -1,0 +1,59 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tessera cover</title>
+<style>
+  body { margin: 0; background: var(--bg-page); }
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; background: var(--bg-page); }
+  svg { position: absolute; inset: 0; }
+  .tile { rx: var(--radius-md); }
+  .accent { fill: var(--accent); }
+  .ink { fill: var(--text); }
+  .tint { fill: var(--indigo-200); }
+  [data-theme="dark"] .tint { fill: var(--accent-subtle); }
+  .edge { fill: var(--border-control); }
+  .words { position: absolute; left: 40px; bottom: 32px; max-width: 420px; }
+  .name { margin: 0; font-family: var(--font-sans); font-weight: 600; font-size: 96px; line-height: .92; letter-spacing: -0.02em; color: var(--text); }
+  .tag { margin: 16px 0 0; font-family: var(--font-sans); font-size: 14px; line-height: 20px; color: var(--text-muted); }
+</style></head>
+<body>
+<div class="cover">
+  <svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+    <!-- blocks: accent 3x3 (136px), text 2x2 (88px), indigo-200 (accent-subtle in dark) 2x3 (88x136), border-control 2x1; tiles 40px = space-48 pitch minus space-8 gap
+         arrangement: flush modular grid from x=496, tiles merged two- and three-wide like dense UI panels
+         pattern: geometric, modular, dense UI -> tiles cut by radius-md; a tessera is a mosaic tile, so the mosaic is the brand
+         scales: pitch space-48, gap space-8, corners radius-md -->
+    <rect class="accent tile" x="496" y="72" width="136" height="136"/>
+    <rect class="ink tile" x="736" y="24" width="88" height="88"/>
+    <rect class="tint tile" x="640" y="120" width="88" height="136"/>
+    <rect class="edge tile" x="832" y="168" width="88" height="40"/>
+    <rect class="edge tile" x="496" y="24" width="40" height="40"/>
+    <rect class="accent tile" x="544" y="24" width="40" height="40"/>
+    <rect class="tint tile" x="640" y="24" width="40" height="40"/>
+    <rect class="ink tile" x="688" y="24" width="40" height="40"/>
+    <rect class="accent tile" x="832" y="24" width="40" height="40"/>
+    <rect class="tint tile" x="880" y="72" width="40" height="40"/>
+    <rect class="edge tile" x="640" y="72" width="40" height="40"/>
+    <rect class="ink tile" x="496" y="216" width="40" height="40"/>
+    <rect class="tint tile" x="544" y="216" width="40" height="40"/>
+    <rect class="edge tile" x="592" y="216" width="40" height="40"/>
+    <rect class="accent tile" x="736" y="120" width="40" height="40"/>
+    <rect class="ink tile" x="784" y="168" width="40" height="40"/>
+    <rect class="edge tile" x="736" y="216" width="40" height="40"/>
+    <rect class="accent tile" x="784" y="216" width="40" height="40"/>
+    <rect class="tint tile" x="832" y="120" width="40" height="40"/>
+    <rect class="ink tile" x="880" y="120" width="40" height="40"/>
+    <rect class="accent tile" x="880" y="216" width="40" height="40"/>
+    <rect class="tint tile" x="832" y="216" width="40" height="40"/>
+    <rect class="tint tile" x="736" y="168" width="40" height="40"/>
+    <rect class="edge tile" x="880" y="24" width="40" height="40"/>
+    <rect class="ink tile" x="832" y="72" width="40" height="40"/>
+    <rect class="tint tile" x="784" y="120" width="40" height="40"/>
+  </svg>
+  <div class="words">
+    <h1 class="name">Tessera</h1>
+    <p class="tag">A calm, dense system for internal tools and data-heavy apps.</p>
+  </div>
+</div>
+</body>
+</html>

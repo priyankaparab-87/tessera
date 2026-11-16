@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>List preview · Tessera</title>
+<script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
+r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
+window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;if(!d||e.origin!==location.origin)return;['theme','accent','font'].forEach(function(k){if(d[k])r.setAttribute('data-'+k,d[k]);});});})();</script>
+<link rel="stylesheet" href="../tessera/tokens.css">
+<link rel="stylesheet" href="../tessera/bundle.css">
+<style>html,body{margin:0;background:var(--surface);color:var(--text);font:var(--text-ui);font-family:var(--font-sans)}</style>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../tessera/bundle.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'16px',padding:'16px',alignItems:'start'}},h(T.List,{bordered:true,items:[{avatar:'Dana Whitfield',title:'Dana Whitfield',description:'dana@example.com',meta:'3 cases'},{avatar:'Sam Lee',title:'Sam Lee',description:'sam@example.com',meta:'1 case'},{avatar:'Priya Raman',title:'Priya Raman',description:'priya@example.com',meta:'—'}]}),h(T.List,{bordered:true,selectable:true,items:[{icon:'file',title:'invoice-48213.pdf',description:'182 KB',selected:true},{icon:'file',title:'damage-photo-1.jpg',description:'2.4 MB'},{icon:'folder',title:'Shipping labels',description:'4 files'}]})));
+</script>
+</body>
+</html>

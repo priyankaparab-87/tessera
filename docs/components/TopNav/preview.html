@@ -1,0 +1,14 @@
+<!-- @dsCard group="Navigation" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TopNav preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{padding:'16px'}},h(T.TopNav,{defaultValue:'cases',items:[{id:'over',label:'Overview'},{id:'cases',label:'Cases'},{id:'cust',label:'Customers'},{id:'rep',label:'Reports'},{id:'set',label:'Settings'}]})));
+</script>
+</body>
+</html>

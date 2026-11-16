@@ -1,0 +1,14 @@
+<!-- @dsCard group="Actions" height=240 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SplitButton preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var T = window.Tessera, h = React.createElement;
+  var root = ReactDOM.createRoot(document.getElementById('root'));
+  function render(el) { root.render(el); }
+  render(h('div',{style:{display:'flex',gap:'12px',alignItems:'center',flexWrap:'wrap',padding:'16px'}},h(T.SplitButton,{open:true,items:[{id:'d',label:'Save as draft',icon:'file'},{id:'s',label:'Save and close',icon:'check'},{divider:true},{id:'x',label:'Discard',icon:'trash',tone:'critical'}]},'Save')));
+</script>
+</body>
+</html>
