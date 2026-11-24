@@ -698,10 +698,18 @@
     }, [open]);
     return { ref: ref, triggerRef: triggerRef, open: open, setOpen: setOpen };
   }
-  function PopFooter(onCancel, onApply, canApply) {
+  function PopFooter(summary, onClear, onConfirm, canConfirm) {
     return h('div', { className: 'ts-datepop__foot' },
-      h(Button, { size: 'sm', variant: 'secondary', onClick: onCancel }, 'Cancel'),
-      h(Button, { size: 'sm', variant: 'primary', onClick: onApply, disabled: !canApply }, 'Apply'));
+      h('span', { className: 'ts-datepop__summary ts-num', 'aria-live': 'polite' }, summary),
+      h(Button, { size: 'sm', variant: 'secondary', onClick: onClear }, 'Clear'),
+      h(Button, { size: 'sm', variant: 'primary', onClick: onConfirm, disabled: !canConfirm }, 'Confirm'));
+  }
+  function dayCount(a, b) { return Math.round((startOfDay(b) - startOfDay(a)) / 86400000) + 1; }
+  function rangeSummary(r, time, hc) {
+    if (!r[0]) return 'Select a start date';
+    if (!r[1]) return fmtDT(r[0], time, hc) + ' – select an end date';
+    var n = dayCount(r[0], r[1]);
+    return fmtDT(r[0], time, hc) + ' – ' + fmtDT(r[1], time, hc) + ' · ' + n + (n === 1 ? ' day' : ' days');
   }
 
   function DatePicker(props) {
@@ -723,7 +731,7 @@
           h(Calendar, { value: time ? draft : v, today: props.today, onChange: pickDay }),
           time ? h('div', { className: 'ts-datepop__times' }, h(TimeInput, { label: 'Time', hourCycle: hc, step: props.timeStep, value: hmOf(draft, defHM),
             onChange: function (hm) { setDraft(withHM(draft || startOfDay(props.today || new Date()), hm)); } })) : null),
-        time ? PopFooter(function () { p.setOpen(false, true); }, function () { set(draft); p.setOpen(false, true); }, !!draft) : null) : null));
+        time ? PopFooter(draft ? fmtDT(draft, true, hc) : 'Select a date', function () { setDraft(null); }, function () { set(draft); p.setOpen(false, true); }, !!draft || !!v) : null) : null));
   }
 
   function DateRangePicker(props) {
@@ -731,19 +739,19 @@
     var st = useControlled(props.value, props.defaultValue || [null, null], props.onChange), v = st[0] || [null, null], set = st[1];
     var dt = useState(v), draft = dt[0], setDraft = dt[1];
     var today = props.today || startOfDay(new Date());
-    var sHM = parseHM(props.defaultStartTime || '00:00') || [0, 0], eHM = parseHM(props.defaultEndTime || '23:59') || [23, 59];
+    var sHM = parseHM(props.defaultStartTime || '00:00') || [0, 0], eHM = parseHM(props.defaultEndTime || '00:00') || [0, 0];
     useEffect(function () { if (p.open) setDraft(v); }, [p.open]);
-    var cur = time ? draft : v;
+    var cur = draft || [null, null];
     function commit(r) { set(r); p.setOpen(false, true); }
     function pick(d) {
       var r;
       if (!cur[0] || cur[1]) r = [withHM(d, time ? hmOf(cur[0], sHM) : [0, 0]), null];
       else if (startOfDay(d) < startOfDay(cur[0])) r = [withHM(d, time ? hmOf(cur[0], sHM) : [0, 0]), withHM(cur[0], time ? eHM : [0, 0])];
       else r = [cur[0], withHM(d, time ? eHM : [0, 0])];
-      if (time) setDraft(r); else if (r[1]) commit(r); else set(r);
+      setDraft(r);
     }
     var presets = props.presets === false ? [] : resolvePresets(props.presets, today);
-    function applyPreset(pr) { var r = [withHM(pr.range[0], time ? sHM : [0, 0]), withHM(pr.range[1], time ? eHM : [0, 0])]; if (time) setDraft(r); else commit(r); }
+    function applyPreset(pr) { setDraft([withHM(pr.range[0], time ? sHM : [0, 0]), withHM(pr.range[1], time ? eHM : [0, 0])]); }
     var activePreset = presets.find(function (pr) { return sameDay(pr.range[0], cur[0]) && sameDay(pr.range[1], cur[1]); });
     var hasValue = !!v[0];
     var text = v[0] ? fmtDT(v[0], time, hc) + ' – ' + (v[1] ? fmtDT(v[1], time, hc) : '…') : '';
@@ -760,7 +768,7 @@
             time ? h('div', { className: 'ts-datepop__times' },
               h(TimeInput, { label: 'Start time', hourCycle: hc, step: props.timeStep, value: hmOf(cur[0], sHM), onChange: function (hm) { setDraft([cur[0] ? withHM(cur[0], hm) : null, cur[1]]); } }),
               h(TimeInput, { label: 'End time', hourCycle: hc, step: props.timeStep, value: hmOf(cur[1], eHM), onChange: function (hm) { setDraft([cur[0], cur[1] ? withHM(cur[1], hm) : null]); } })) : null)),
-        time ? PopFooter(function () { p.setOpen(false, true); }, function () { var r = draft; if (r[0] && r[1] && r[1] < r[0]) r = [r[1], r[0]]; commit(r); }, !!(draft[0] && draft[1])) : null) : null));
+        PopFooter(rangeSummary(cur, time, hc), function () { setDraft([null, null]); }, function () { var r = cur; if (r[0] && r[1] && r[1] < r[0]) r = [r[1], r[0]]; commit(r[0] && r[1] ? r : [null, null]); }, !!(cur[0] && cur[1]) || (!cur[0] && !!v[0]))) : null));
   }
 
   function TimePicker(props) {

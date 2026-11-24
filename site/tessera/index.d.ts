@@ -190,7 +190,7 @@ export interface MultiSelectProps { label?: string; options: Array<string | { va
 export interface CalendarProps { value?: Date; rangeStart?: Date; rangeEnd?: Date; onChange?: (d: Date) => void; today?: Date; className?: string }
 export interface DatePickerProps { label?: string; value?: Date | null; defaultValue?: Date | null; onChange?: (d: Date | null) => void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; required?: boolean; size?: 'sm' | 'md' | 'lg';
   /** Show the × clear button once there is a value (default true). */ clearable?: boolean;
-  /** Add a time input and Cancel / Apply buttons; the value then carries hours and minutes. */ withTime?: boolean;
+  /** Add a time input and Clear / Confirm buttons; the value then carries hours and minutes. */ withTime?: boolean;
   /** Minutes per ↑ ↓ step in the time input (default 15). */ timeStep?: number;
   /** 24 (default) or 12 for AM/PM. */ hourCycle?: 12 | 24;
   /** Time given to a newly picked date when withTime is on, "HH:MM" (default "09:00"). */ defaultTime?: string;
@@ -200,9 +200,9 @@ export type DateRangePreset = 'today' | 'yesterday' | 'last7' | 'last30' | 'last
 export interface DateRangePickerProps { label?: string; value?: [Date | null, Date | null]; defaultValue?: [Date | null, Date | null]; onChange?: (range: [Date | null, Date | null]) => void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; required?: boolean; size?: 'sm' | 'md' | 'lg';
   /** Quick ranges on the left. Defaults to Today, Last 7 days, Last 30 days, This month, Last month, This quarter; false hides them. */ presets?: DateRangePreset[] | false;
   /** Show the × clear button once there is a value (default true). */ clearable?: boolean;
-  /** Add Start time and End time inputs and Cancel / Apply buttons. */ withTime?: boolean;
+  /** Add Start time and End time inputs (default 00:00). The range picker always confirms with Clear / Confirm buttons. */ withTime?: boolean;
   timeStep?: number; hourCycle?: 12 | 24;
-  /** Times given to a new range when withTime is on (defaults "00:00" and "23:59"). */ defaultStartTime?: string; defaultEndTime?: string;
+  /** Times given to a new range when withTime is on (both default "00:00"). */ defaultStartTime?: string; defaultEndTime?: string;
   today?: Date; className?: string }
 export interface TimePickerProps { label?: string; value?: string; defaultValue?: string; onChange?: (t: string) => void; step?: number; startHour?: number; endHour?: number; open?: boolean; className?: string }
 export interface SliderProps { label?: string; value?: number; defaultValue?: number; onChange?: (n: number) => void; min?: number; max?: number; step?: number; unit?: string; showValue?: boolean; disabled?: boolean; className?: string }
@@ -358,7 +358,7 @@ export declare const DatePicker: React.FC<DatePickerProps>;
 /** Use: Start and end dates: reporting periods, filters, bookings. With withTime: maintenance windows, log searches, shifts.
  * Instead: One date → DatePicker.
  * Do: Offer presets for common ranges (Last 7 days, This quarter).
- * Do: Keep the default 00:00–23:59 times for filters so the end day is included.
+ * Do: Show the selected range before people confirm.
  * Don't: Don't use two separate DatePickers for one range.
  * Don't: Don't offer more than about eight presets.
  */
