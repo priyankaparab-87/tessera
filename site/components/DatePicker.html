@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DatePicker · Tessera</title>
-<meta name="description" content="Pick one date.">
+<meta name="description" content="Pick one date, or a date and time with `withTime`.">
 <script>(function(){var r=document.documentElement;try{var m=localStorage.getItem('tessera-docs:mode');var t=JSON.parse(localStorage.getItem('tessera:theme')||'null')||{};
 r.setAttribute('data-theme',m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 r.setAttribute('data-accent',t.accent||'indigo');r.setAttribute('data-font',t.font||'geist');}catch(e){r.setAttribute('data-theme','light');}
@@ -31,21 +31,22 @@ window.addEventListener('message',function(e){var d=e.data&&e.data.tesseraTheme;
 <main id="main" class="main">
 <p class="eyebrow">Forms</p>
 <h1 class="title-1">DatePicker</h1>
-<div class="preview"><iframe src="../previews/DatePicker.html" title="DatePicker live preview" style="height:400px"></iframe><a class="preview-open" href="../previews/DatePicker.html">Open preview on its own</a></div>
-<div class="doc"><p>Pick one date. The field shows <code>2 Sep 2026</code> format; the calendar opens below.</p>
+<div class="preview"><iframe src="../previews/DatePicker.html" title="DatePicker live preview" style="height:470px"></iframe><a class="preview-open" href="../previews/DatePicker.html">Open preview on its own</a></div>
+<div class="doc"><p>Pick one date, or a date and time with <code>withTime</code>. The field shows <code>2 Sep 2026</code> (or <code>2 Sep 2026, 14:30</code>); the calendar opens below at the field's width.</p>
+<ul><li>The × in the field clears the value; Delete or Backspace on the focused field does the same. <code>clearable={false}</code> hides it for required fields.</li><li><code>withTime</code> adds a Time input under the calendar and Cancel / Apply buttons: the value changes only on Apply. Type <code>9</code>, <code>930</code>, <code>9:30</code> or <code>9:30 pm</code>; ↑ ↓ step by <code>timeStep</code> minutes (default 15). <code>hourCycle={12}</code> shows AM/PM; the default is 24-hour. A new date takes <code>defaultTime</code> (default <code>09:00</code>).</li><li>Without <code>withTime</code>, picking a day sets it and closes. Esc closes and returns focus to the field.</li></ul>
 <h2 id="when-to-use">When to use</h2>
-<p>One date in a form: due date, delivery date.</p>
+<p>One date in a form: due date, delivery date. With <code>withTime</code>: one moment, such as a publish time or appointment.</p>
 <h2 id="use-something-else">Use something else</h2>
-<p>A start and end → DateRangePicker. Date and time → DatePicker + TimePicker side by side.</p>
+<p>A start and end → DateRangePicker. A time of day on its own → TimePicker.</p>
 <h2 id="do">Do</h2>
-<ul><li>Show dates as “2 Sep 2026”.</li><li>Default to today or the most likely date when it helps.</li></ul>
+<ul><li>Show dates as “2 Sep 2026”.</li><li>Default to today or the most likely date when it helps.</li><li>Use <code>withTime</code> only when the time matters; most dates don't need one.</li></ul>
 <h2 id="don-t">Don't</h2>
-<ul><li>Don't ask people to type dates in an ambiguous format.</li></ul></div>
+<ul><li>Don't ask people to type dates in an ambiguous format.</li><li>Don't pair a DatePicker with a separate TimePicker for one moment; use <code>withTime</code>.</li></ul></div>
 <h2 id="props">Props</h2><div class="table-wrap"><table class="props"><thead><tr><th>Prop</th><th>Type</th></tr></thead><tbody>
 <tr><td><code>label</code></td><td><code>string</code></td></tr>
 <tr><td><code>value</code></td><td><code>Date | null</code></td></tr>
 <tr><td><code>defaultValue</code></td><td><code>Date | null</code></td></tr>
-<tr><td><code>onChange</code></td><td><code>(d: Date) =&gt; void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; className?: string</code></td></tr>
+<tr><td><code>onChange</code></td><td><code>(d: Date | null) =&gt; void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; required?: boolean; size?: &#x27;sm&#x27; | &#x27;md&#x27; | &#x27;lg&#x27;; /** Show the × clear button once there is a value (default true). */ clearable?: boolean; /** Add a time input and Cancel / Apply buttons; the value then carries hours and minutes. */ withTime?: boolean; /** Minutes per ↑ ↓ step in the time input (default 15). */ timeStep?: number; /** 24 (default) or 12 for AM/PM. */ hourCycle?: 12 | 24; /** Time given to a newly picked date when withTime is on, &quot;HH:MM&quot; (default &quot;09:00&quot;). */ defaultTime?: string; /** Override today&#x27;s date (highlight and presets); defaults to the current date. */ today?: Date; className?: string</code></td></tr>
 </tbody></table></div>
 <h2 id="use">Use</h2><pre class="code"><code>const { DatePicker } = window.Tessera;
 const el = React.createElement(DatePicker, { /* props */ });</code></pre>

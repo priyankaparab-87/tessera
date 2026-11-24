@@ -7,7 +7,7 @@ Pick a time from a list at `step` minutes between `startHour` and `endHour`. 24-
 A time of day in a form: pickup slot, reminder.
 
 ## Use something else
-Durations → NumberField with a unit.
+Durations → NumberField with a unit. A date and time together → DatePicker with `withTime`.
 
 ## Do
 - Set `step` to the real granularity (15 or 30 minutes).

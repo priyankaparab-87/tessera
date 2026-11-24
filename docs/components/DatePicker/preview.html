@@ -1,4 +1,4 @@
-<!-- @dsCard group="Forms" height=400 -->
+<!-- @dsCard group="Forms" height=470 -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>DatePicker preview</title></head>
@@ -7,8 +7,13 @@
 <script>
   var T = window.Tessera, h = React.createElement;
   var root = ReactDOM.createRoot(document.getElementById('root'));
-  function render(el) { root.render(el); }
-  render(h('div',{style:{display:'flex',flexDirection:'column',gap:'16px',padding:'16px',maxWidth:'320px'}},h(T.DatePicker,{label:'Follow-up date',open:true,defaultValue:new Date(2026,8,18)})));
+  var d = new Date(); d.setDate(d.getDate() + 4);
+  var t = new Date(d); t.setHours(14, 30, 0, 0);
+  root.render(h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '16px', alignItems: 'flex-start' } },
+    h('div', { style: { width: '280px' } }, h(T.DatePicker, { label: 'Due date', defaultValue: d, open: true })),
+    h('div', { style: { width: '280px', display: 'flex', flexDirection: 'column', gap: '16px' } },
+      h(T.DatePicker, { label: 'Publish at', withTime: true, defaultValue: t, description: 'Date and time, 24-hour' }),
+      h(T.DatePicker, { label: 'Follow-up', placeholder: 'Select date' }))));
 </script>
 </body>
 </html>

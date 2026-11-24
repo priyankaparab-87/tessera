@@ -844,3 +844,37 @@ button.ts-link { border: 0; background: transparent; padding: 0; font: inherit; 
   font-family: var(--font-numeric, var(--font-sans)); font-variant-numeric: tabular-nums;
 }
 .ts-stat__period { font-family: var(--font-sans); }
+
+/* Date pickers v2: field-width popover, clear button, presets, time entry */
+.ts-input--picker { padding: 0; gap: 0; cursor: pointer; }
+.ts-input--picker.is-disabled { cursor: not-allowed; }
+.ts-input__trigger { flex: 1; min-width: 0; height: 100%; display: flex; align-items: center; gap: var(--space-8); padding: 0 var(--space-12); border: 0; background: transparent; color: var(--text-subtle); font: 400 14px/20px var(--font-sans); text-align: left; cursor: inherit; border-radius: inherit; }
+.ts-input__trigger:focus-visible { outline: 0; }
+.ts-input__trigger .ts-input__value, .ts-input__trigger .ts-input__placeholder { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-input--picker .ts-input__clear { margin-right: var(--space-6); flex: none; }
+.ts-picker { width: 100%; }
+.ts-picker--date { min-width: min(272px, 100%); }
+.ts-picker--range { min-width: min(280px, 100%); }
+.ts-picker--range.has-presets { min-width: min(416px, 100%); }
+.ts-picker--range.ts-picker--time { min-width: min(416px, 100%); }
+.ts-datepop { left: 0; right: auto; min-width: 100%; width: max-content; max-width: min(640px, calc(100vw - 32px)); padding: 0; display: flex; flex-direction: column; }
+.ts-daterange { display: flex; gap: 0; }
+.ts-datepop__body { display: flex; min-width: 0; }
+.ts-datepop__main { flex: 1; min-width: 264px; display: flex; flex-direction: column; padding: var(--space-8); gap: var(--space-8); }
+.ts-datepop .ts-cal { width: auto; padding: 0; }
+.ts-datepop .ts-daterange__presets { flex: none; width: 136px; padding: var(--space-8); border-right: 1px solid var(--border-subtle); }
+.ts-daterange__presets button { width: 100%; white-space: nowrap; }
+.ts-daterange__presets button.is-active { background: var(--accent-subtle); color: var(--text-accent); font-weight: 500; }
+.ts-daterange__presets button:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+.ts-datepop__times { display: flex; gap: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--border-subtle); }
+.ts-timein { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.ts-timein__label { font: 500 12px/16px var(--font-sans); color: var(--text-subtle); }
+.ts-timein .ts-input { padding: 0 var(--space-8); gap: var(--space-6); color: var(--text-muted); }
+.ts-timein.has-error .ts-input { border-color: var(--critical); }
+.ts-datepop__foot { display: flex; justify-content: flex-end; gap: var(--space-8); padding: var(--space-8); border-top: 1px solid var(--border-subtle); }
+@media (max-width: 480px) {
+  .ts-datepop__body { flex-direction: column; }
+  .ts-datepop .ts-daterange__presets { width: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--border-subtle); }
+  .ts-daterange__presets button { width: auto; }
+}
+.ts-timein input { width: 0; }
