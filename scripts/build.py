@@ -25,6 +25,7 @@ GROUP_ORDER = ['Foundations', 'Actions', 'Forms', 'Overlays', 'Feedback', 'Navig
                'App chrome', 'Data display', 'Layout', 'Patterns']
 
 esc = html.escape
+SEARCH_TEXT = {}  # component name -> extra words the sidebar search matches (group and summary)
 
 
 # --------------------------------------------------------------------------- tokens.css
@@ -297,7 +298,13 @@ def page(title, body, prefix, active, nav, description=''):
     def link(href, label, key):
         cur = ' aria-current="page"' if key == active else ''
         return '<a href="%s%s"%s>%s</a>' % (prefix, href, cur, esc(label))
-    side = ['<nav class="side" aria-label="Docs">',
+    search = ('<div class="side-search" role="search">'
+              '<label class="ts-sr" for="side-q">Search components</label>'
+              '<div class="ts-input ts-input--sm"><svg class="side-search__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+              '<input id="side-q" type="search" placeholder="Search components" autocomplete="off" spellcheck="false" aria-controls="side" aria-describedby="side-q-status">'
+              '<kbd class="side-search__key" aria-hidden="true">/</kbd></div>'
+              '<p id="side-q-status" class="side-search__status" aria-live="polite"></p></div>')
+    side = [search, '<nav class="side" aria-label="Docs">',
             '<div class="side-group">', link('index.html', 'Overview', 'overview'),
             link('developers.html', 'For developers', 'developers'),
             link('designers.html', 'For designers', 'designers'),
@@ -307,7 +314,7 @@ def page(title, body, prefix, active, nav, description=''):
             link('changelog.html', 'Changelog', 'changelog'), '</div>']
     for g, items in nav:
         side.append('<div class="side-group"><p class="side-label">%s</p>' % esc(g))
-        side += [link('components/%s.html' % n, n, n) for n in items]
+        side += [link('components/%s.html' % n, n, n).replace('<a ', '<a data-k="%s" ' % esc((n + ' ' + g + ' ' + SEARCH_TEXT.get(n, '')).lower()), 1) for n in items]
         side.append('</div>')
     side.append('</nav>')
     links = []
@@ -512,6 +519,7 @@ def main():
 
     readme = open(os.path.join(DOCS, 'README.md')).read()
     comps = read_components()
+    SEARCH_TEXT.update({n: c['summary'] for n, c in comps.items()})
     nav = order_components(comps, readme)
     flat = [n for _, items in nav for n in items]
     props = parse_props(open(os.path.join(DIST, 'index.d.ts')).read())

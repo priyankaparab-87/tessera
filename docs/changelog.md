@@ -17,6 +17,7 @@ What changed in Tessera each week, newest first, summarised per component or acr
 
 ### Docs site
 - New Changelog page: this weekly summary.
+- Search at the top of the sidebar finds components by name or purpose. Press `/` to jump to it and Enter to open the best match.
 
 ## Week of 16 Nov 2026
 
