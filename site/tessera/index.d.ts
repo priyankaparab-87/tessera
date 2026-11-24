@@ -188,8 +188,22 @@ export interface FieldsetProps { legend: string; description?: string; columns?:
 export interface ComboboxProps { label?: string; options: Array<string | { value: string; label: string }>; value?: string; defaultValue?: string; onChange?: (v: string) => void; placeholder?: string; open?: boolean; description?: string; error?: string; className?: string }
 export interface MultiSelectProps { label?: string; options: Array<string | { value: string; label: string }>; value?: string[]; defaultValue?: string[]; onChange?: (v: string[]) => void; placeholder?: string; open?: boolean; className?: string }
 export interface CalendarProps { value?: Date; rangeStart?: Date; rangeEnd?: Date; onChange?: (d: Date) => void; today?: Date; className?: string }
-export interface DatePickerProps { label?: string; value?: Date | null; defaultValue?: Date | null; onChange?: (d: Date) => void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; className?: string }
-export interface DateRangePickerProps { label?: string; value?: [Date | null, Date | null]; defaultValue?: [Date | null, Date | null]; onChange?: (range: any) => void; presets?: string[]; open?: boolean; className?: string }
+export interface DatePickerProps { label?: string; value?: Date | null; defaultValue?: Date | null; onChange?: (d: Date | null) => void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; required?: boolean; size?: 'sm' | 'md' | 'lg';
+  /** Show the × clear button once there is a value (default true). */ clearable?: boolean;
+  /** Add a time input and Cancel / Apply buttons; the value then carries hours and minutes. */ withTime?: boolean;
+  /** Minutes per ↑ ↓ step in the time input (default 15). */ timeStep?: number;
+  /** 24 (default) or 12 for AM/PM. */ hourCycle?: 12 | 24;
+  /** Time given to a newly picked date when withTime is on, "HH:MM" (default "09:00"). */ defaultTime?: string;
+  /** Override today's date (highlight and presets); defaults to the current date. */ today?: Date; className?: string }
+/** A preset id ('today' | 'yesterday' | 'last7' | 'last30' | 'last90' | 'thisMonth' | 'lastMonth' | 'thisQuarter' | 'lastQuarter' | 'thisYear') or your own range. */
+export type DateRangePreset = 'today' | 'yesterday' | 'last7' | 'last30' | 'last90' | 'thisMonth' | 'lastMonth' | 'thisQuarter' | 'lastQuarter' | 'thisYear' | { label: string; value: [Date, Date] | ((today: Date) => [Date, Date]) };
+export interface DateRangePickerProps { label?: string; value?: [Date | null, Date | null]; defaultValue?: [Date | null, Date | null]; onChange?: (range: [Date | null, Date | null]) => void; placeholder?: string; open?: boolean; description?: string; error?: string; disabled?: boolean; required?: boolean; size?: 'sm' | 'md' | 'lg';
+  /** Quick ranges on the left. Defaults to Today, Last 7 days, Last 30 days, This month, Last month, This quarter; false hides them. */ presets?: DateRangePreset[] | false;
+  /** Show the × clear button once there is a value (default true). */ clearable?: boolean;
+  /** Add Start time and End time inputs and Cancel / Apply buttons. */ withTime?: boolean;
+  timeStep?: number; hourCycle?: 12 | 24;
+  /** Times given to a new range when withTime is on (defaults "00:00" and "23:59"). */ defaultStartTime?: string; defaultEndTime?: string;
+  today?: Date; className?: string }
 export interface TimePickerProps { label?: string; value?: string; defaultValue?: string; onChange?: (t: string) => void; step?: number; startHour?: number; endHour?: number; open?: boolean; className?: string }
 export interface SliderProps { label?: string; value?: number; defaultValue?: number; onChange?: (n: number) => void; min?: number; max?: number; step?: number; unit?: string; showValue?: boolean; disabled?: boolean; className?: string }
 export interface FileUploadProps { label?: string; multiple?: boolean; accept?: string; hint?: string; files?: Array<{ name: string; size?: number; progress?: number; error?: string }>; onChange?: (files: any) => void; error?: string; className?: string }
@@ -332,17 +346,21 @@ export declare const MultiSelect: React.FC<MultiSelectProps>;
  * Don't: Don't use it as a read-only events calendar; it's an input.
  */
 export declare const Calendar: React.FC<CalendarProps>;
-/** Use: One date in a form: due date, delivery date.
- * Instead: A start and end → DateRangePicker. Date and time → DatePicker + TimePicker side by side.
+/** Use: One date in a form: due date, delivery date. With withTime: one moment, such as a publish time.
+ * Instead: A start and end → DateRangePicker. A time of day on its own → TimePicker.
  * Do: Show dates as “2 Sep 2026”.
  * Do: Default to today or the most likely date when it helps.
+ * Do: Use withTime only when the time matters.
  * Don't: Don't ask people to type dates in an ambiguous format.
+ * Don't: Don't pair a DatePicker with a separate TimePicker for one moment; use withTime.
  */
 export declare const DatePicker: React.FC<DatePickerProps>;
-/** Use: Start and end dates: reporting periods, filters, bookings.
+/** Use: Start and end dates: reporting periods, filters, bookings. With withTime: maintenance windows, log searches, shifts.
  * Instead: One date → DatePicker.
  * Do: Offer presets for common ranges (Last 7 days, This quarter).
+ * Do: Keep the default 00:00–23:59 times for filters so the end day is included.
  * Don't: Don't use two separate DatePickers for one range.
+ * Don't: Don't offer more than about eight presets.
  */
 export declare const DateRangePicker: React.FC<DateRangePickerProps>;
 /** Use: A time of day in a form: pickup slot, reminder.

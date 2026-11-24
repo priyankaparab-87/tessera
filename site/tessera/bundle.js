@@ -575,12 +575,52 @@
   var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function fmtDate(d) { return d ? d.getDate() + ' ' + MON[d.getMonth()] + ' ' + d.getFullYear() : ''; }
   function sameDay(a, b) { return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+  function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function addDays(d, n) { var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function pad2(n) { return String(n).padStart(2, '0'); }
+  function withHM(d, hm) { if (!d) return d; var x = new Date(d); x.setHours(hm[0], hm[1], 0, 0); return x; }
+  function fmtTime(d, hc) { var hh = d.getHours(), mm = pad2(d.getMinutes()); if (hc === 12) { var s = hh >= 12 ? 'PM' : 'AM'; return (hh % 12 || 12) + ':' + mm + ' ' + s; } return pad2(hh) + ':' + mm; }
+  function fmtDT(d, time, hc) { return d ? fmtDate(d) + (time ? ', ' + fmtTime(d, hc) : '') : ''; }
+  function parseHM(s, hc) {
+    var m = String(s || '').trim().toLowerCase().match(/^(\d{1,2})(?::?(\d{2}))?\s*([ap])?\.?m?\.?$/); if (!m) return null;
+    var hh = +m[1], mm = m[2] ? +m[2] : 0; if (m[3]) { if (hh < 1 || hh > 12) return null; hh = (hh % 12) + (m[3] === 'p' ? 12 : 0); }
+    return hh > 23 || mm > 59 ? null : [hh, mm];
+  }
+  function hmOf(d, fallback) { return d ? [d.getHours(), d.getMinutes()] : fallback; }
+
+  /* Relative ranges for DateRangePicker. Each returns [start, end] as whole days, ending today where open-ended. */
+  var RANGE_PRESETS = {
+    today: { label: 'Today', get: function (t) { return [t, t]; } },
+    yesterday: { label: 'Yesterday', get: function (t) { var y = addDays(t, -1); return [y, y]; } },
+    last7: { label: 'Last 7 days', get: function (t) { return [addDays(t, -6), t]; } },
+    last30: { label: 'Last 30 days', get: function (t) { return [addDays(t, -29), t]; } },
+    last90: { label: 'Last 90 days', get: function (t) { return [addDays(t, -89), t]; } },
+    thisMonth: { label: 'This month', get: function (t) { return [new Date(t.getFullYear(), t.getMonth(), 1), t]; } },
+    lastMonth: { label: 'Last month', get: function (t) { return [new Date(t.getFullYear(), t.getMonth() - 1, 1), new Date(t.getFullYear(), t.getMonth(), 0)]; } },
+    thisQuarter: { label: 'This quarter', get: function (t) { return [new Date(t.getFullYear(), Math.floor(t.getMonth() / 3) * 3, 1), t]; } },
+    lastQuarter: { label: 'Last quarter', get: function (t) { var q = Math.floor(t.getMonth() / 3) * 3; return [new Date(t.getFullYear(), q - 3, 1), new Date(t.getFullYear(), q, 0)]; } },
+    thisYear: { label: 'Year to date', get: function (t) { return [new Date(t.getFullYear(), 0, 1), t]; } }
+  };
+  var DEFAULT_PRESETS = ['today', 'last7', 'last30', 'thisMonth', 'lastMonth', 'thisQuarter'];
+  function resolvePresets(list, today) {
+    return (list || DEFAULT_PRESETS).map(function (p) {
+      if (typeof p === 'string') {
+        var key = RANGE_PRESETS[p] ? p : Object.keys(RANGE_PRESETS).find(function (k) { return RANGE_PRESETS[k].label.toLowerCase() === p.toLowerCase(); });
+        return key ? { id: key, label: RANGE_PRESETS[key].label, range: RANGE_PRESETS[key].get(today) } : null;
+      }
+      var r = typeof p.value === 'function' ? p.value(today) : p.value;
+      return r && r[0] && r[1] ? { id: p.id || p.label, label: p.label, range: [startOfDay(r[0]), startOfDay(r[1])] } : null;
+    }).filter(Boolean);
+  }
+
   function Calendar(props) {
-    var start = props.value || props.rangeStart || props.month || new Date(2026, 8, 1);
-    var m = useState(new Date(start.getFullYear(), start.getMonth(), 1)), month = m[0], setMonth = m[1];
+    var today = props.today || startOfDay(new Date());
+    var anchor = props.rangeEnd || props.rangeStart || props.value || props.month || today;
+    var m = useState(new Date(anchor.getFullYear(), anchor.getMonth(), 1)), month = m[0], setMonth = m[1];
+    var ak = anchor.getFullYear() * 12 + anchor.getMonth(), seen = useRef(ak);
+    useEffect(function () { if (seen.current !== ak) { seen.current = ak; setMonth(new Date(anchor.getFullYear(), anchor.getMonth(), 1)); } }, [ak]);
     var first = (month.getDay() + 6) % 7; var days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
     var cells = []; for (var i = 0; i < first; i++) cells.push(null); for (var d = 1; d <= days; d++) cells.push(new Date(month.getFullYear(), month.getMonth(), d));
-    var today = props.today || new Date(2026, 8, 14);
     var f = useState(props.value || props.rangeStart || (today.getMonth() === month.getMonth() ? today : month)), focus = f[0], setFocus = f[1];
     var kb = useRef(false); var gridRef = useRef(null);
     if (focus.getMonth() !== month.getMonth() || focus.getFullYear() !== month.getFullYear()) focus = new Date(month.getFullYear(), month.getMonth(), Math.min(focus.getDate(), days));
@@ -594,11 +634,12 @@
       else return;
       e.preventDefault(); kb.current = true; setFocus(d); if (d.getMonth() !== month.getMonth() || d.getFullYear() !== month.getFullYear()) setMonth(new Date(d.getFullYear(), d.getMonth(), 1));
     }
-    function inRange(x) { return props.rangeStart && props.rangeEnd && x > props.rangeStart && x < props.rangeEnd; }
+    var rs = props.rangeStart && startOfDay(props.rangeStart), re = props.rangeEnd && startOfDay(props.rangeEnd);
+    function inRange(x) { return rs && re && x > rs && x < re; }
     return h('div', { className: 'ts-cal' },
       h('div', { className: 'ts-cal__head' },
         h(IconButton, { icon: 'chevron-left', size: 'sm', label: 'Previous month', onClick: function () { setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1)); } }),
-        h('span', { className: 'ts-cal__title' }, MONTHS[month.getMonth()] + ' ' + month.getFullYear()),
+        h('span', { className: 'ts-cal__title', 'aria-live': 'polite' }, MONTHS[month.getMonth()] + ' ' + month.getFullYear()),
         h(IconButton, { icon: 'chevron-right', size: 'sm', label: 'Next month', onClick: function () { setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1)); } })),
       h('div', { className: 'ts-cal__grid', role: 'group', 'aria-label': MONTHS[month.getMonth()] + ' ' + month.getFullYear(), ref: gridRef, onKeyDown: onKey },
         ['Mo','Tu','We','Th','Fr','Sa','Su'].map(function (w) { return h('span', { key: w, className: 'ts-cal__dow', 'aria-hidden': true }, w); }),
@@ -611,28 +652,115 @@
         })));
   }
 
+  /* Time entry inside the date popovers: type 9, 930, 9:30 or 9:30 pm; arrow keys step by `step` minutes. */
+  function TimeInput(props) {
+    var hc = props.hourCycle || 24, step = props.step || 15;
+    var shown = props.value ? fmtTime(withHM(new Date(2000, 0, 1), props.value), hc) : '';
+    var s = useState(shown), text = s[0], setText = s[1]; var bad = useState(false), invalid = bad[0], setInvalid = bad[1];
+    useEffect(function () { setText(shown); setInvalid(false); }, [shown]);
+    function commit() { var v = parseHM(text, hc); if (v) { setInvalid(false); props.onChange(v); setText(fmtTime(withHM(new Date(2000, 0, 1), v), hc)); } else setInvalid(text !== ''); }
+    function onKey(e) {
+      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') { if (e.key === 'Enter') commit(); return; }
+      e.preventDefault(); var v = (text !== shown && parseHM(text, hc)) || props.value || [0, 0]; var t = v[0] * 60 + v[1];
+      t = e.key === 'ArrowUp' ? Math.floor(t / step) * step + step : Math.ceil(t / step) * step - step; t = Math.max(0, Math.min(1439, t));
+      var n = [Math.floor(t / 60), t % 60]; props.onChange(n);
+    }
+    return h('label', { className: cx('ts-timein', invalid && 'has-error') },
+      h('span', { className: 'ts-timein__label' }, props.label),
+      h('span', { className: 'ts-input ts-input--sm' }, h(Icon, { name: 'clock', size: 14 }),
+        h('input', { className: 'ts-num', value: text, inputMode: 'numeric', placeholder: hc === 12 ? '9:00 AM' : '09:00', 'aria-invalid': invalid || undefined,
+          'aria-label': props.label, onChange: function (e) { setText(e.target.value); }, onBlur: commit, onKeyDown: onKey })));
+  }
+
+  /* Shared field: a trigger that opens the popover, plus a clear button once there is a value. */
+  function PickerField(props, o) {
+    var size = props.size || 'md';
+    return h('div', { className: cx('ts-input', 'ts-input--' + size, 'ts-input--picker', o.open && 'is-open', props.disabled && 'is-disabled') },
+      h('button', { id: o.id, ref: o.triggerRef, type: 'button', className: 'ts-input__trigger', disabled: props.disabled, 'aria-haspopup': 'dialog', 'aria-expanded': o.open,
+        'aria-describedby': (props.error || props.description) ? o.id + '-msg' : undefined, 'aria-invalid': props.error ? true : undefined,
+        onClick: function () { o.setOpen(!o.open); },
+        onKeyDown: function (e) { if ((e.key === 'Delete' || e.key === 'Backspace') && o.hasValue && props.clearable !== false) { e.preventDefault(); o.clear(); } } },
+        h(Icon, { name: 'calendar', size: 16 }),
+        h('span', { className: o.hasValue ? 'ts-input__value ts-num' : 'ts-input__placeholder' }, o.hasValue ? o.text : o.placeholder)),
+      o.hasValue && props.clearable !== false && !props.disabled ? h('button', { type: 'button', className: 'ts-input__clear', 'aria-label': o.clearLabel, tabIndex: -1,
+        onClick: function () { o.clear(); o.triggerRef.current && o.triggerRef.current.focus(); } }, h(Icon, { name: 'close', size: 16 })) : null);
+  }
+  function usePopover(props) {
+    var ref = useRef(null), triggerRef = useRef(null);
+    var o = useState(!!props.open), open = o[0], setOpenRaw = o[1];
+    function setOpen(v, refocus) { setOpenRaw(v); if (!v && refocus && triggerRef.current) triggerRef.current.focus(); }
+    useEffect(function () {
+      if (!open) return;
+      function onDoc(e) { if (ref.current && !ref.current.contains(e.target)) setOpenRaw(false); }
+      function onKey(e) { if (e.key === 'Escape') setOpen(false, true); }
+      document.addEventListener('mousedown', onDoc); document.addEventListener('keydown', onKey);
+      return function () { document.removeEventListener('mousedown', onDoc); document.removeEventListener('keydown', onKey); };
+    }, [open]);
+    return { ref: ref, triggerRef: triggerRef, open: open, setOpen: setOpen };
+  }
+  function PopFooter(onCancel, onApply, canApply) {
+    return h('div', { className: 'ts-datepop__foot' },
+      h(Button, { size: 'sm', variant: 'secondary', onClick: onCancel }, 'Cancel'),
+      h(Button, { size: 'sm', variant: 'primary', onClick: onApply, disabled: !canApply }, 'Apply'));
+  }
+
   function DatePicker(props) {
-    var id = useId(); var ref = useRef(null);
+    var id = useId(); var p = usePopover(props); var time = !!props.withTime, hc = props.hourCycle || 24;
     var st = useControlled(props.value, props.defaultValue || null, props.onChange), v = st[0], set = st[1];
-    var o = useState(!!props.open), open = o[0], setOpen = o[1]; useOutside(ref, open, function () { setOpen(false); });
-    return FieldShell(props, id, h('div', { className: 'ts-pop-anchor', ref: ref },
-      h('button', { id: id, type: 'button', className: cx('ts-input', 'ts-input--' + (props.size || 'md'), 'ts-input--button', open && 'is-open'), onClick: function () { setOpen(!open); }, disabled: props.disabled },
-        h(Icon, { name: 'calendar', size: 16 }), h('span', { className: v ? 'ts-input__value ts-num' : 'ts-input__placeholder' }, v ? fmtDate(v) : (props.placeholder || 'Select date'))),
-      open ? h('div', { className: 'ts-pop' }, h(Calendar, { value: v, onChange: function (d) { set(d); setOpen(false); } })) : null));
+    var dt = useState(v), draft = dt[0], setDraft = dt[1];
+    var defHM = parseHM(props.defaultTime || '09:00') || [9, 0];
+    useEffect(function () { if (p.open) setDraft(v); }, [p.open]);
+    function pickDay(d) {
+      if (!time) { set(startOfDay(d)); p.setOpen(false, true); return; }
+      setDraft(withHM(d, hmOf(draft, defHM)));
+    }
+    var hasValue = !!v;
+    return FieldShell(props, id, h('div', { className: 'ts-pop-anchor ts-picker ts-picker--date' + (time ? ' ts-picker--time' : ''), ref: p.ref },
+      PickerField(props, { id: id, triggerRef: p.triggerRef, open: p.open, setOpen: p.setOpen, hasValue: hasValue, text: fmtDT(v, time, hc),
+        placeholder: props.placeholder || (time ? 'Select date and time' : 'Select date'), clearLabel: 'Clear date', clear: function () { set(null); } }),
+      p.open ? h('div', { className: 'ts-pop ts-datepop', role: 'dialog', 'aria-label': props.label || 'Choose date' },
+        h('div', { className: 'ts-datepop__main' },
+          h(Calendar, { value: time ? draft : v, today: props.today, onChange: pickDay }),
+          time ? h('div', { className: 'ts-datepop__times' }, h(TimeInput, { label: 'Time', hourCycle: hc, step: props.timeStep, value: hmOf(draft, defHM),
+            onChange: function (hm) { setDraft(withHM(draft || startOfDay(props.today || new Date()), hm)); } })) : null),
+        time ? PopFooter(function () { p.setOpen(false, true); }, function () { set(draft); p.setOpen(false, true); }, !!draft) : null) : null));
   }
 
   function DateRangePicker(props) {
-    var id = useId(); var ref = useRef(null);
-    var st = useControlled(props.value, props.defaultValue || [null, null], props.onChange), v = st[0], set = st[1];
-    var o = useState(!!props.open), open = o[0], setOpen = o[1]; useOutside(ref, open, function () { setOpen(false); });
-    function pick(d) { if (!v[0] || v[1]) set([d, null]); else if (d < v[0]) set([d, v[0]]); else { set([v[0], d]); setOpen(false); } }
-    var presets = props.presets || ['Last 7 days', 'Last 30 days', 'This quarter'];
-    return FieldShell(props, id, h('div', { className: 'ts-pop-anchor', ref: ref },
-      h('button', { id: id, type: 'button', className: cx('ts-input', 'ts-input--' + (props.size || 'md'), 'ts-input--button', open && 'is-open'), onClick: function () { setOpen(!open); } },
-        h(Icon, { name: 'calendar', size: 16 }), h('span', { className: v[0] ? 'ts-input__value ts-num' : 'ts-input__placeholder' }, v[0] ? fmtDate(v[0]) + ' – ' + (v[1] ? fmtDate(v[1]) : '…') : (props.placeholder || 'Select dates'))),
-      open ? h('div', { className: 'ts-pop ts-daterange' },
-        h('ul', { className: 'ts-daterange__presets' }, presets.map(function (p) { return h('li', { key: p }, h('button', { type: 'button' }, p)); })),
-        h(Calendar, { rangeStart: v[0], rangeEnd: v[1], onChange: pick })) : null));
+    var id = useId(); var p = usePopover(props); var time = !!props.withTime, hc = props.hourCycle || 24;
+    var st = useControlled(props.value, props.defaultValue || [null, null], props.onChange), v = st[0] || [null, null], set = st[1];
+    var dt = useState(v), draft = dt[0], setDraft = dt[1];
+    var today = props.today || startOfDay(new Date());
+    var sHM = parseHM(props.defaultStartTime || '00:00') || [0, 0], eHM = parseHM(props.defaultEndTime || '23:59') || [23, 59];
+    useEffect(function () { if (p.open) setDraft(v); }, [p.open]);
+    var cur = time ? draft : v;
+    function commit(r) { set(r); p.setOpen(false, true); }
+    function pick(d) {
+      var r;
+      if (!cur[0] || cur[1]) r = [withHM(d, time ? hmOf(cur[0], sHM) : [0, 0]), null];
+      else if (startOfDay(d) < startOfDay(cur[0])) r = [withHM(d, time ? hmOf(cur[0], sHM) : [0, 0]), withHM(cur[0], time ? eHM : [0, 0])];
+      else r = [cur[0], withHM(d, time ? eHM : [0, 0])];
+      if (time) setDraft(r); else if (r[1]) commit(r); else set(r);
+    }
+    var presets = props.presets === false ? [] : resolvePresets(props.presets, today);
+    function applyPreset(pr) { var r = [withHM(pr.range[0], time ? sHM : [0, 0]), withHM(pr.range[1], time ? eHM : [0, 0])]; if (time) setDraft(r); else commit(r); }
+    var activePreset = presets.find(function (pr) { return sameDay(pr.range[0], cur[0]) && sameDay(pr.range[1], cur[1]); });
+    var hasValue = !!v[0];
+    var text = v[0] ? fmtDT(v[0], time, hc) + ' – ' + (v[1] ? fmtDT(v[1], time, hc) : '…') : '';
+    return FieldShell(props, id, h('div', { className: 'ts-pop-anchor ts-picker ts-picker--range' + (presets.length ? ' has-presets' : '') + (time ? ' ts-picker--time' : ''), ref: p.ref },
+      PickerField(props, { id: id, triggerRef: p.triggerRef, open: p.open, setOpen: p.setOpen, hasValue: hasValue, text: text,
+        placeholder: props.placeholder || (time ? 'Select dates and times' : 'Select dates'), clearLabel: 'Clear dates', clear: function () { set([null, null]); } }),
+      p.open ? h('div', { className: 'ts-pop ts-datepop ts-daterange', role: 'dialog', 'aria-label': props.label || 'Choose dates' },
+        h('div', { className: 'ts-datepop__body' },
+          presets.length ? h('ul', { className: 'ts-daterange__presets', 'aria-label': 'Quick ranges' }, presets.map(function (pr) {
+            return h('li', { key: pr.id }, h('button', { type: 'button', className: cx(activePreset === pr && 'is-active'), 'aria-pressed': activePreset === pr, onClick: function () { applyPreset(pr); } }, pr.label));
+          })) : null,
+          h('div', { className: 'ts-datepop__main' },
+            h(Calendar, { rangeStart: cur[0], rangeEnd: cur[1], today: today, onChange: pick }),
+            time ? h('div', { className: 'ts-datepop__times' },
+              h(TimeInput, { label: 'Start time', hourCycle: hc, step: props.timeStep, value: hmOf(cur[0], sHM), onChange: function (hm) { setDraft([cur[0] ? withHM(cur[0], hm) : null, cur[1]]); } }),
+              h(TimeInput, { label: 'End time', hourCycle: hc, step: props.timeStep, value: hmOf(cur[1], eHM), onChange: function (hm) { setDraft([cur[0], cur[1] ? withHM(cur[1], hm) : null]); } })) : null)),
+        time ? PopFooter(function () { p.setOpen(false, true); }, function () { var r = draft; if (r[0] && r[1] && r[1] < r[0]) r = [r[1], r[0]]; commit(r); }, !!(draft[0] && draft[1])) : null) : null));
   }
 
   function TimePicker(props) {
