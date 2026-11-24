@@ -44,6 +44,10 @@ Theme with attributes on `<html>` (`data-theme`, `data-accent`, `data-font`) or 
 | `scripts/build.py` | Builds `dist/tokens.css` and the docs site into `site/` |
 | `site/` | The built docs site, deployed as is |
 
+## Changelog
+
+Every change that goes live gets an entry in [`docs/changelog.md`](docs/changelog.md), which the site shows at [/changelog](https://tessera-4df.pages.dev/changelog). Put new entries at the top under the date they go live (`## 24 Nov 2026`), give each a `###` title, list changes under **Added**, **Changed**, **Fixed** or **Removed**, and end with a `Commit:` link. Then run the build below and commit the changelog with the change.
+
 ## Build the docs
 
 ```sh

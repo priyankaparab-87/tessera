@@ -303,7 +303,8 @@ def page(title, body, prefix, active, nav, description=''):
             link('designers.html', 'For designers', 'designers'),
             link('foundations.html', 'Foundations', 'foundations'),
             link('tokens.html', 'Tokens', 'tokens'),
-            link('components/index.html', 'Components', 'components'), '</div>']
+            link('components/index.html', 'Components', 'components'),
+            link('changelog.html', 'Changelog', 'changelog'), '</div>']
     for g, items in nav:
         side.append('<div class="side-group"><p class="side-label">%s</p>' % esc(g))
         side += [link('components/%s.html' % n, n, n) for n in items]
@@ -461,6 +462,26 @@ def tokens_page(t):
     return '\n'.join(out)
 
 
+def changelog_page(src):
+    """docs/changelog.md → a timeline: one block per date (## heading), one entry per ### heading."""
+    title = re.match(r'#\s+(.*)', src).group(1)
+    body = re.sub(r'^#\s+.*\n', '', src, count=1)
+    intro, days = split_sections(body)
+    out = ['<h1 class="title-1">%s</h1>' % esc(title), '<div class="doc">%s</div>' % md(intro)]
+    toc = []
+    tl = ['<ol class="changelog">']
+    for date, text in days:
+        toc.append('<a href="#%s">%s</a>' % (slug(date), esc(date)))
+        tl.append('<li class="cl-day" id="%s"><h2 class="cl-date title-4">%s</h2><div class="cl-entries">' % (slug(date), esc(date)))
+        _, entries = split_sections(text, 3)
+        for name, ebody in entries:
+            tl.append('<article class="cl-entry" id="%s"><h3 class="cl-title title-4">%s</h3><div class="doc">%s</div></article>' % (slug(date + ' ' + name), inline(name), md(ebody.split('\n', 1)[1] if '\n' in ebody else '')))
+        tl.append('</div></li>')
+    tl.append('</ol>')
+    out.insert(1, '<nav class="toc" aria-label="Dates">%s</nav>' % ''.join(toc))
+    return '\n'.join(out + tl)
+
+
 def component_page(c, props, nav_pos):
     prev_n, next_n = nav_pos
     body = ['<p class="eyebrow">%s</p>' % esc(c['group']),
@@ -528,6 +549,7 @@ def main():
   <a class="card" href="tokens.html"><span class="title-4">Tokens</span><span class="muted">Every colour, type style, space, radius and shadow.</span></a>
   <a class="card" href="components/index.html"><span class="title-4">{n} components</span><span class="muted">Live previews with when to use, do and don't.</span></a>
   <a class="card" href="components/Themes.html"><span class="title-4">Themes</span><span class="muted">Four accents and four typefaces, light and dark, all WCAG AA.</span></a>
+  <a class="card" href="changelog.html"><span class="title-4">Changelog</span><span class="muted">Every change, newest first.</span></a>
 </div>
 """.format(svg=svg, tag=tagline, intro=md(intro), n=n_comp)
     write('index.html', page('Tessera — a design system for internal tools', overview, '', 'overview', nav, tagline))
@@ -544,6 +566,10 @@ def main():
                       for t in re.findall(r'^##\s+(.*)$', body, re.M))
         html_ = '<h1 class="title-1">%s</h1><nav class="toc" aria-label="On this page">%s</nav><div class="doc">%s</div>' % (esc(title), toc, md(body))
         write(key + '.html', page('%s · Tessera' % title, html_, '', key, nav, desc))
+
+    # Changelog (docs/changelog.md)
+    write('changelog.html', page('Changelog · Tessera', changelog_page(open(os.path.join(DOCS, 'changelog.md')).read()), '', 'changelog', nav,
+                                 'Every change to Tessera, newest first.'))
 
     # Foundations
     fparts = ['<h1 class="title-1">Foundations</h1>']
