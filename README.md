@@ -46,7 +46,7 @@ Theme with attributes on `<html>` (`data-theme`, `data-accent`, `data-font`) or 
 
 ## Changelog
 
-Every change that goes live gets an entry in [`docs/changelog.md`](docs/changelog.md), which the site shows at [/changelog](https://tessera-4df.pages.dev/changelog). Put new entries at the top under the date they go live (`## 24 Nov 2026`), give each a `###` title, list changes under **Added**, **Changed**, **Fixed** or **Removed**, and end with a `Commit:` link. Then run the build below and commit the changelog with the change.
+[`docs/changelog.md`](docs/changelog.md) is a weekly summary of what changed, shown on the site at [/changelog](https://tessera-4df.pages.dev/changelog). Add to the current week's section (`## Week of 23 Nov 2026`, starting on a Monday), or start a new one at the top. Group changes under the component they affect (`### DatePicker`), or under `### Design system` or `### Docs site` for wider changes. Write one short bullet per change that matters to people using Tessera; leave out small fixes. Then run the build below and commit the changelog with the change.
 
 ## Build the docs
 

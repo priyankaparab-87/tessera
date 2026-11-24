@@ -463,7 +463,7 @@ def tokens_page(t):
 
 
 def changelog_page(src):
-    """docs/changelog.md → a timeline: one block per date (## heading), one entry per ### heading."""
+    """docs/changelog.md → a timeline: one block per week (## heading), one card per component or area (### heading)."""
     title = re.match(r'#\s+(.*)', src).group(1)
     body = re.sub(r'^#\s+.*\n', '', src, count=1)
     intro, days = split_sections(body)
@@ -478,7 +478,7 @@ def changelog_page(src):
             tl.append('<article class="cl-entry" id="%s"><h3 class="cl-title title-4">%s</h3><div class="doc">%s</div></article>' % (slug(date + ' ' + name), inline(name), md(ebody.split('\n', 1)[1] if '\n' in ebody else '')))
         tl.append('</div></li>')
     tl.append('</ol>')
-    out.insert(1, '<nav class="toc" aria-label="Dates">%s</nav>' % ''.join(toc))
+    out.insert(1, '<nav class="toc" aria-label="Weeks">%s</nav>' % ''.join(toc))
     return '\n'.join(out + tl)
 
 
@@ -549,7 +549,7 @@ def main():
   <a class="card" href="tokens.html"><span class="title-4">Tokens</span><span class="muted">Every colour, type style, space, radius and shadow.</span></a>
   <a class="card" href="components/index.html"><span class="title-4">{n} components</span><span class="muted">Live previews with when to use, do and don't.</span></a>
   <a class="card" href="components/Themes.html"><span class="title-4">Themes</span><span class="muted">Four accents and four typefaces, light and dark, all WCAG AA.</span></a>
-  <a class="card" href="changelog.html"><span class="title-4">Changelog</span><span class="muted">Every change, newest first.</span></a>
+  <a class="card" href="changelog.html"><span class="title-4">Changelog</span><span class="muted">What changed each week.</span></a>
 </div>
 """.format(svg=svg, tag=tagline, intro=md(intro), n=n_comp)
     write('index.html', page('Tessera — a design system for internal tools', overview, '', 'overview', nav, tagline))
@@ -569,7 +569,7 @@ def main():
 
     # Changelog (docs/changelog.md)
     write('changelog.html', page('Changelog · Tessera', changelog_page(open(os.path.join(DOCS, 'changelog.md')).read()), '', 'changelog', nav,
-                                 'Every change to Tessera, newest first.'))
+                                 'A weekly summary of what changed in Tessera.'))
 
     # Foundations
     fparts = ['<h1 class="title-1">Foundations</h1>']
